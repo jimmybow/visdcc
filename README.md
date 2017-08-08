@@ -62,7 +62,7 @@ def myfun(x):
                     {'id': 2, 'label': 'Node 2'},
                     {'id': 4, 'label': 'Node 4'},
                     {'id': 5, 'label': 'Node 5'},
-                    {'id': 6, 'label': 'Node 6'} ],
+                    {'id': 6, 'label': 'Node 6'}                    ],
            'edges':[{'from': 1, 'to': 3},
                     {'from': 1, 'to': 2} ]
            }
