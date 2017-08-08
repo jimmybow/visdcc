@@ -1,0 +1,57 @@
+{
+  "src/components/ExampleComponent.react.js": {
+    "description": "ExampleComponent is an example component.\r\nIt takes a single property, `label`, and\r\ndisplays it.",
+    "methods": [],
+    "props": {
+      "label": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": "A label that will be printed when this component is rendered."
+      }
+    }
+  },
+  "src/components/Network.react.js": {
+    "description": "",
+    "methods": [],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": ""
+      },
+      "data": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "{nodes:[{id: 1, label: 'Node 1'},\r\n              {id: 2, label: 'Node 2'},\r\n              {id: 3, label: 'Node 3'},\r\n              {id: 4, label: 'Node 4'},\r\n              {id: 5, label: 'Node 5'} ],\r\n       edges :[{from: 1, to: 3},\r\n               {from: 1, to: 2},\r\n               {from: 2, to: 4},\r\n               {from: 2, to: 5} ]\r\n       }",
+          "computed": false
+        }
+      },
+      "options": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "{}",
+          "computed": false
+        }
+      },
+      "style": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  }
+}
