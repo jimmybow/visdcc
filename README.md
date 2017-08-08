@@ -1,6 +1,79 @@
 # visdcc
+Dash Core Components for vis.js 
 
-visdcc
+# Installing :
+```
+pip install visdcc
+```
+
+# Requirements：
+
+* **dash** -- The core dash backend
+* **dash-renderer** -- The dash front-end
+* **dash-html-components** -- HTML components
+* **dash-core-components** -- Supercharged components
+* **plotly** -- Plotly graphing library used in examples
+
+# Usage :
+```
+import dash
+import dash_core_components as dcc
+import dash_html_components as html
+from dash.dependencies import Input, Output, Event, State
+import mydcc
+
+app = dash.Dash()
+app.layout = html.Div(...)
+
+@app.callback(...)
+def myfun(...):
+    ...
+    return ...
+
+if __name__ == '__main__':
+    app.run_server()
+```
+
+# 1. visdcc.Network : 
+Plot basic network
+
+Usage :
+```
+app.layout = html.Div([
+      visdcc.Network(id = 'net', 
+                     options = dict(height= '600px', width= '100%')),
+      dcc.Input(id = 'label',
+                placeholder = 'Enter a label ...',
+                type = 'text',
+                value = ''  ),
+      html.Br(),html.Br(),
+      dcc.RadioItems(id = 'color',
+                     options=[{'label': 'Red'  , 'value': '#ff0000'},
+                              {'label': 'Green', 'value': '#00ff00'},
+                              {'label': 'Blue' , 'value': '#0000ff'} ],
+                     value='Red'  )             
+])
+
+@app.callback(
+    Output('net', 'data'),
+    [Input('label', 'value')])
+def myfun(x):
+    data ={'nodes':[{'id': 1, 'label':    x    , 'color':'#00ffff'},
+                    {'id': 2, 'label': 'Node 2'},
+                    {'id': 4, 'label': 'Node 4'},
+                    {'id': 5, 'label': 'Node 5'},
+                    {'id': 6, 'label': 'Node 6'} ],
+           'edges':[{'from': 1, 'to': 3},
+                    {'from': 1, 'to': 2} ]
+           }
+    return data
+
+@app.callback(
+    Output('net', 'options'),
+    [Input('color', 'value')])
+def myfun(x):
+    return {'nodes':{'color': x}}
+```
 
 ## Dash
 
