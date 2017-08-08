@@ -1,4 +1,4 @@
-# visdcc
+# Visdcc
 Dash Core Components for vis.js 
 
 # Installing :
