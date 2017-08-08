@@ -28,12 +28,12 @@ export default class Network extends Component {
             this.ee.update(nextProps.data.edges)            
         }
         if (this.props.options !== nextProps.options){
-            this.net.setOptions({physics: {enabled:false}})
+            this.net.setOptions( nextProps.options )
         }  
     }
     
     shouldComponentUpdate(nextProps){
-            return (this.props.data !== nextProps.data );
+            return (this.props.data !== nextProps.data || this.props.options !== nextProps.options);
     }
     
     render() {
