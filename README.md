@@ -13,7 +13,6 @@ pip install visdcc
 * **dash-renderer** -- The dash front-end
 * **dash-html-components** -- HTML components
 * **dash-core-components** -- Supercharged components
-* **plotly** -- Plotly graphing library used in examples
 
 # Usage :
 ```
