@@ -1,5 +1,5 @@
 # Visdcc
-Dash Core Components for vis.js 
+Dash Core Components for vis.js <br/> 
 Documents of vis.js : http://visjs.org/docs/network/
 
 # Installing :
