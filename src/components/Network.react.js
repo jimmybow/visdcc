@@ -11,11 +11,14 @@ export default class Network extends Component {
     }    
         
     componentDidMount() {
-        const {id, data, options} = this.props;    
+        const {id, data, options, setProps} = this.props;    
         var gd = document.getElementById(id);      
         this.nn.add(data.nodes)
         this.ee.add(data.edges)
         this.net = new vis.Network(gd, {nodes: this.nn, edges: this.ee}, options)  
+        this.net.addEventListener('select', function(x){ 
+            if (setProps) setProps({selection:{'nodes':x.nodes, 'edges':x.edges}})
+        })
     }
     
     componentWillReceiveProps(nextProps) {    
@@ -48,7 +51,8 @@ Network.propTypes = {
     id : PropTypes.string.isRequired,
     data : PropTypes.object,   
     options : PropTypes.object,
-    style: PropTypes.object
+    style: PropTypes.object,
+    selection: PropTypes.object
 };
         
 Network.defaultProps = {
@@ -60,9 +64,7 @@ Network.defaultProps = {
            edges :[{from: 1, to: 3},
                    {from: 1, to: 2},
                    {from: 2, to: 4},
-                   {from: 2, to: 5} ]
-           },
-    options:{}
+                   {from: 2, to: 5} ]          }    
 }        
 
          
