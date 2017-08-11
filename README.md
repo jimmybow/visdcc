@@ -35,9 +35,8 @@ if __name__ == '__main__':
 ```
 
 # 1. visdcc.Network : 
-Plot basic network
 
-Usage :
+Plot basic network
 ```
 app.layout = html.Div([
       visdcc.Network(id = 'net', 
@@ -77,7 +76,6 @@ def myfun(x):
 
 # 2. Get Selected Nodes and Edges :
 
-Usage :
 ```
 app.layout = html.Div([
       visdcc.Network(id = 'net',
