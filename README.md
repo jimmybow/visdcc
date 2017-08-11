@@ -75,6 +75,35 @@ def myfun(x):
     return {'nodes':{'color': x}}
 ```
 
+# 2. Get Selected Nodes and Edges :
+
+Usage :
+```
+app.layout = html.Div([
+      visdcc.Network(id = 'net',
+                     selection = {'nodes':[], 'edges':[]},
+                     options = dict(height= '600px', width= '100%')),
+      html.Div(id = 'nodes'),
+      html.Div(id = 'edges')
+])
+      
+@app.callback(
+    Output('nodes', 'children'),
+    [Input('net', 'selection')])
+def myfun(x): 
+    s = 'Selected nodes : '
+    if len(x['nodes']) > 0 : s += str(x['nodes'][0])
+    return s
+
+@app.callback(
+    Output('edges', 'children'),
+    [Input('net', 'selection')])
+def myfun(x): 
+    s = 'Selected edges : '
+    if len(x['edges']) > 0 : s = [s] + [html.Div(i) for i in x['edges']]
+    return s
+```
+
 ## Dash
 
 Go to this link to learn about [Dash][].
