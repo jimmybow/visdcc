@@ -23,11 +23,14 @@ export default class Network extends Component {
     
     componentWillReceiveProps(nextProps) {    
         if (this.props.data !== nextProps.data){ 
-            var new_id = nextProps.data.nodes.map(function(x) {return x.id })
-            var remove_aim = this.nn.getIds().filter(function(x){ return new_id.indexOf(x) == -1 })
-            this.nn.remove(remove_aim)
+            var new_id_nodes = nextProps.data.nodes.map(function(x) {return x.id })
+            var remove_aim_nodes = this.nn.getIds().filter(function(x){ return new_id_nodes.indexOf(x) == -1 })
+            this.nn.remove(remove_aim_nodes)
             this.nn.update(nextProps.data.nodes) 
-            this.ee.remove(this.ee.getIds())
+            
+            var new_id_edges = nextProps.data.edges.map(function(x) {return x.id })
+            var remove_aim_edges = this.ee.getIds().filter(function(x){ return new_id_edges.indexOf(x) == -1 })
+            this.ee.remove(remove_aim_edges)
             this.ee.update(nextProps.data.edges)            
         }
         if (this.props.options !== nextProps.options){
