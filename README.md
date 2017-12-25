@@ -102,6 +102,37 @@ def myfun(x):
     return s
 ```
 
+# 3. Animate or move the camera :
+
+```
+app = dash.Dash()
+app.layout = html.Div([
+      visdcc.Network(id = 'net', 
+                     options = dict(height= '600px', width= '100%')),
+      dcc.Input(id = 'label',
+                placeholder = 'Enter a scale ...',
+                type = 'text',
+                value = ''  ),
+      dcc.Input(id = 'labelx',
+                placeholder = 'Enter x position ...',
+                type = 'text',
+                value = ''  ),    
+      dcc.Input(id = 'labely',
+                placeholder = 'Enter y position ...',
+                type = 'text',
+                value = ''  )              
+])
+
+@app.callback(
+    Output('net', 'moveTo'),
+    [Input('label', 'value'),
+     Input('labelx', 'value'),
+     Input('labely', 'value')])
+def myfun(z, x, y):
+    if z == '': z = 1
+    return {'position': {'x': x, 'y': y}, 'scale': z}
+```
+
 ## Dash
 
 Go to this link to learn about [Dash][].
