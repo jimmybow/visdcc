@@ -130,7 +130,9 @@ app.layout = html.Div([
      Input('labely', 'value')])
 def myfun(z, x, y):
     if z == '': z = 1
-    return {'position': {'x': x, 'y': y}, 'scale': z}
+    if x == '': x = 1
+    if y == '': y = 1
+    return {'position': {'x': int(x), 'y': int(y)}, 'scale': int(z)}
 ```
 
 ## Dash
