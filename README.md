@@ -120,6 +120,10 @@ app.layout = html.Div([
       dcc.Input(id = 'labely',
                 placeholder = 'Enter y position ...',
                 type = 'text',
+                value = ''  ), 
+      dcc.Input(id = 'node',
+                placeholder = 'Enter node id ...',
+                type = 'text',
                 value = ''  )              
 ])
 
@@ -133,6 +137,13 @@ def myfun(z, x, y):
     if x == '': x = 1
     if y == '': y = 1
     return {'position': {'x': int(x), 'y': int(y)}, 'scale': int(z)}
+
+@app.callback(
+    Output('net', 'fit'),
+    [Input('node', 'value')])
+def myfun(x):
+    if x == '': x = None
+    return {'nodes': [x]}
 ```
 
 ## Dash
