@@ -142,8 +142,8 @@ def myfun(z, x, y):
     Output('net', 'fit'),
     [Input('node', 'value')])
 def myfun(x):
-    if x == '': return {}
-    else :      return {'nodes': [x]}
+    if x == '': x = None
+    return {'nodes': [x]}
 ```
 
 ## Dash

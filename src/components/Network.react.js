@@ -11,7 +11,7 @@ export default class Network extends Component {
     }    
         
     componentDidMount() {
-        const {id, data, options, setProps} = this.props;    
+        const {id, data, options, moveTo, fit, focus, setProps} = this.props;    
         var gd = document.getElementById(id);      
         this.nn.add(data.nodes)
         this.ee.add(data.edges)
@@ -19,6 +19,9 @@ export default class Network extends Component {
         this.net.addEventListener('select', function(x){ 
             if (setProps) setProps({selection:{'nodes':x.nodes, 'edges':x.edges}})
         })
+        if (moveTo.Is_used != false) this.net.moveTo( moveTo ) 
+        if (fit.Is_used != false) this.net.fit( fit ) 
+        if (focus.Is_used != false) this.net.focus( focus.nodeId, focus.options) 
     }
     
     componentWillReceiveProps(nextProps) {    
@@ -35,7 +38,16 @@ export default class Network extends Component {
         }
         if (this.props.options !== nextProps.options){
             this.net.setOptions( nextProps.options )
+        } 
+        if (this.props.moveTo !== nextProps.moveTo & nextProps.moveTo.Is_used != false){
+            this.net.moveTo( nextProps.moveTo )
+        }
+        if (this.props.fit !== nextProps.fit & nextProps.fit.Is_used != false){
+            this.net.fit( nextProps.fit )
         }  
+        if (this.props.focus !== nextProps.focus & nextProps.focus.Is_used != false){
+            this.net.focus( nextProps.focus.nodeId, nextProps.focus.options)
+        }        
     }
     
     shouldComponentUpdate(nextProps){
@@ -55,7 +67,10 @@ Network.propTypes = {
     data : PropTypes.object,   
     options : PropTypes.object,
     style: PropTypes.object,
-    selection: PropTypes.object
+    selection: PropTypes.object,
+    moveTo: PropTypes.object,
+    fit: PropTypes.object,
+    focus: PropTypes.object
 };
         
 Network.defaultProps = {
@@ -68,7 +83,10 @@ Network.defaultProps = {
                    {from: 1, to: 2},
                    {from: 2, to: 4},
                    {from: 2, to: 5} ]          },
-    options : {}                
+    options : {},
+    moveTo : {Is_used: false},
+    fit: {Is_used: false},
+    focus: {Is_used: false}               
 }        
 
          

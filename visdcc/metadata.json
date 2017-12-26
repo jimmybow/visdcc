@@ -1,6 +1,7 @@
 {
   "src/components/ExampleComponent.react.js": {
     "description": "ExampleComponent is an example component.\r\nIt takes a single property, `label`, and\r\ndisplays it.",
+    "displayName": "ExampleComponent",
     "methods": [],
     "props": {
       "label": {
@@ -14,6 +15,7 @@
   },
   "src/components/Network.react.js": {
     "description": "",
+    "displayName": "Network",
     "methods": [],
     "props": {
       "id": {
@@ -58,6 +60,39 @@
         },
         "required": false,
         "description": ""
+      },
+      "moveTo": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "{Is_used: false}",
+          "computed": false
+        }
+      },
+      "fit": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "{Is_used: false}",
+          "computed": false
+        }
+      },
+      "focus": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "{Is_used: false}",
+          "computed": false
+        }
       }
     }
   }
