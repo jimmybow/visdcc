@@ -7,7 +7,7 @@ export default class DataTable extends Component {
         super(props); 
 	}
 	
-	handleClick(row, col){
+    handleClick(row, col){
 		const {setProps, selectedcell} = this.props;  		
 		if (setProps) setProps({  selectedcell: {row:row, col:col}  })
 	}
@@ -32,7 +32,7 @@ export default class DataTable extends Component {
         }
     }
     
-	componentDidMount() { 
+    componentDidMount() { 
 	    const {data, setProps} = this.props;  
 		if (setProps){ 
 		    var j = 0
@@ -57,7 +57,7 @@ export default class DataTable extends Component {
 		}    
     }
 	
-	componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps(nextProps) {
 		var col_render_counts = [];
         var col_sorter_counts = [];
 		var cols_index = [];
