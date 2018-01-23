@@ -99,12 +99,12 @@ export default class DataTable extends Component {
         }
         if (box_type == null) var rowSelection = null        
         return (
-		    <Table id =           {id} 
-			       style =        {style} 
-			       dataSource =   {data.dataSource} 
-				   columns =      {data.columns}
+            <Table id =           {id} 
+		   style =        {style} 
+		   dataSource =   {data.dataSource} 
+		   columns =      {data.columns}
                    pagination =   {pagination} 
-				   scroll =       {scroll}
+                   scroll =       {scroll}
                    bordered =     {bordered}	
                    showHeader =   {showHeader}		
                    title  =       {title_value} 
