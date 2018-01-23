@@ -1,4 +1,160 @@
 {
+  "src/components/DataTable.react.js": {
+    "description": "",
+    "displayName": "DataTable",
+    "methods": [
+      {
+        "name": "handleClick",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "row",
+            "type": null
+          },
+          {
+            "name": "col",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "gg",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "col",
+            "type": null
+          },
+          {
+            "name": "ff",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "gg_sort",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "col",
+            "type": null
+          }
+        ],
+        "returns": null
+      }
+    ],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": ""
+      },
+      "data": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "{dataSource:[{key: 1, name: 'Jacky', age: 20},\r\n                   {key: 2, name: 'Mei'  , age: 18},\r\n                   {key: 3, name: 'Jimmy', age: 32} ],\r\n       columns :[{title: 'Names',\r\n                  dataIndex: 'name',\r\n                  key: 'name',\r\n                  Is_click: true},\r\n                 {title: 'Ages',\r\n                  dataIndex: 'age',\r\n                  key: 'age'}       ]                  }",
+          "computed": false
+        }
+      },
+      "style": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": ""
+      },
+      "pagination": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "{pageSize: 10}",
+          "computed": false
+        }
+      },
+      "scroll": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "{ x: 300, y: 300 }",
+          "computed": false
+        }
+      },
+      "bordered": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "showHeader": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "true",
+          "computed": false
+        }
+      },
+      "selectedcell": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": ""
+      },
+      "title": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "footer": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "box_selected_keys": {
+        "type": {
+          "name": "array"
+        },
+        "required": false,
+        "description": ""
+      },
+      "box_type": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  },
   "src/components/ExampleComponent.react.js": {
     "description": "ExampleComponent is an example component.\r\nIt takes a single property, `label`, and\r\ndisplays it.",
     "displayName": "ExampleComponent",
