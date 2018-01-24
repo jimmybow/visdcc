@@ -150,6 +150,9 @@ def myfun(x):
 ```
 
 # 2. visdcc.DataTable : 
+See documents of antd.react.js
+
+CSS:https://unpkg.com/antd@3.1.1/dist/antd.css
 
 ### Plot Basic Table and Get Selected Cell
 ```
