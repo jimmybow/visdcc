@@ -1,11 +1,11 @@
 # Visdcc
-Dash Core Components for Visualization
+Dash Core Components for Visualization.
 
-- [Installing](#Installing)
-- [Requirements](#Requirements)
-- [Usage](#Usage)
-- [visdcc.Network](#visdcc.Network)
-  - [Plot Basic Network](#Plot_Basic_Network)
+- [Installing](#installing)
+- [Requirements](#requirements)
+- [Usage](#usage)
+- [visdcc.Network](#1-visdccnetwork-)
+  - [Plot Basic Network](#plot-basic-network)
 
 # Installing :
 ```
