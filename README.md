@@ -36,6 +36,7 @@ if __name__ == '__main__':
 
 # 1. visdcc.Network : 
 See documents of vis.js : http://visjs.org/docs/network/
+
 CSS: https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis.min.css
 
 ### Plot Basic Network
