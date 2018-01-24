@@ -37,7 +37,7 @@ if __name__ == '__main__':
 # 1. visdcc.Network : 
 See documents of vis.js : http://visjs.org/docs/network/
 
-1. Plot Basic Network
+### Plot Basic Network
 ```
 app.layout = html.Div([
       visdcc.Network(id = 'net', 
