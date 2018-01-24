@@ -150,7 +150,7 @@ def myfun(x):
 ```
 
 # 2. visdcc.DataTable : 
-See documents of antd.react.js
+See documents of antd.js:https://ant.design/components/table/
 
 CSS:https://unpkg.com/antd@3.1.1/dist/antd.css
 
