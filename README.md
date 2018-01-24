@@ -1,6 +1,12 @@
 # Visdcc
 Dash Core Components for Visualization
 
+- [Installing](#Installing)
+- [Requirements](#Requirements)
+- [Usage](#Usage)
+- [visdcc.Network](#visdcc.Network)
+  - [Plot Basic Network](#Plot_Basic_Network)
+
 # Installing :
 ```
 pip install visdcc
@@ -32,10 +38,6 @@ def myfun(...):
 if __name__ == '__main__':
     app.run_server()
 ```
-
-- [visdcc.Network](#visdcc.Network)
-  - [Plot Basic Network](#Plot Basic Network)
-
 
 # 1. visdcc.Network : 
 See documents of vis.js : http://visjs.org/docs/network/
