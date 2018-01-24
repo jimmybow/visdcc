@@ -5,11 +5,11 @@ Dash Core Components for Visualization.
 - [Requirements](#requirements)
 - [Usage](#usage-)
 - [visdcc.Network](#1-visdccnetwork-)
-  - [Plot Basic Network](#plot-basic-network)
-  - [Get Selected Nodes and Edges](#get-selected-nodes-and-edges-)
+  - [Plot basic network](#plot-basic-network)
+  - [Get selected nodes and edges](#get-selected-nodes-and-edges-)
   - [Animate or move the camera](#animate-or-move-the-camera-)
 - [visdcc.DataTable](#2-visdccdatatable-)  
-  - [Plot Basic Table and Get Selected Cell](#plot-basic-table-and-get-selected-cell)
+  - [Plot basic table and get selected cell](#plot-basic-table-and-get-selected-cell)
 - [Learning about dash ...](#dash)  
 
 # Installing :
@@ -49,7 +49,7 @@ See documents of vis.js : http://visjs.org/docs/network/
 
 CSS : https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis.min.css
 
-### Plot Basic Network
+### Plot basic network
 ```
 app.layout = html.Div([
       visdcc.Network(id = 'net', 
@@ -87,7 +87,7 @@ def myfun(x):
     return {'nodes':{'color': x}}
 ```
 
-### Get Selected Nodes and Edges :
+### Get selected nodes and edges :
 
 ```
 app.layout = html.Div([
@@ -164,7 +164,7 @@ See documents of antd.js : https://ant.design/components/table/
 
 CSS : https://unpkg.com/antd@3.1.1/dist/antd.css
 
-### Plot Basic Table and Get Selected Cell
+### Plot basic table and get selected cell
 ```
 app = dash.Dash()
 
