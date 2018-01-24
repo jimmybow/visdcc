@@ -36,6 +36,7 @@ if __name__ == '__main__':
 
 # 1. visdcc.Network : 
 See documents of vis.js : http://visjs.org/docs/network/
+CSS: https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis.min.css
 
 ### Plot Basic Network
 ```
@@ -75,7 +76,7 @@ def myfun(x):
     return {'nodes':{'color': x}}
 ```
 
-Get Selected Nodes and Edges :
+### Get Selected Nodes and Edges :
 
 ```
 app.layout = html.Div([
@@ -103,7 +104,7 @@ def myfun(x):
     return s
 ```
 
-Animate or move the camera :
+### Animate or move the camera :
 
 ```
 app = dash.Dash()
@@ -149,7 +150,7 @@ def myfun(x):
 
 # 2. visdcc.DataTable : 
 
-Plot Basic Table and Get Selected Cell
+### Plot Basic Table and Get Selected Cell
 ```
 app = dash.Dash()
 
