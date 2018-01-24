@@ -33,6 +33,10 @@ if __name__ == '__main__':
     app.run_server()
 ```
 
+- [visdcc.Network](#visdcc.Network)
+  - [Plot Basic Network](#Plot Basic Network)
+
+
 # 1. visdcc.Network : 
 See documents of vis.js : http://visjs.org/docs/network/
 
