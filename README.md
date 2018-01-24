@@ -37,7 +37,7 @@ if __name__ == '__main__':
 # 1. visdcc.Network : 
 See documents of vis.js : http://visjs.org/docs/network/
 
-CSS: https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis.min.css
+CSS : https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis.min.css
 
 ### Plot Basic Network
 ```
@@ -150,9 +150,9 @@ def myfun(x):
 ```
 
 # 2. visdcc.DataTable : 
-See documents of antd.js:https://ant.design/components/table/
+See documents of antd.js : https://ant.design/components/table/
 
-CSS:https://unpkg.com/antd@3.1.1/dist/antd.css
+CSS : https://unpkg.com/antd@3.1.1/dist/antd.css
 
 ### Plot Basic Table and Get Selected Cell
 ```
