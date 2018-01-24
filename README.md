@@ -1,11 +1,14 @@
 # Visdcc
 Dash Core Components for Visualization.
 
-- [Installing](#installing)
+- [Installing](#installing-)
 - [Requirements](#requirements)
-- [Usage](#usage)
+- [Usage](#usage-)
 - [visdcc.Network](#1-visdccnetwork-)
   - [Plot Basic Network](#plot-basic-network)
+  - [Get Selected Nodes and Edges](#get-selected-nodes-and-edges-)
+  - [Animate or move the camera](#animate-or-move-the-camera-)
+- [visdcc.DataTable](#2-visdccdatatable-)  
 
 # Installing :
 ```
