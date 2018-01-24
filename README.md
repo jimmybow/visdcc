@@ -10,6 +10,7 @@ Dash Core Components for Visualization.
   - [Animate or move the camera](#animate-or-move-the-camera-)
 - [visdcc.DataTable](#2-visdccdatatable-)  
   - [Plot Basic Table and Get Selected Cell](#plot-basic-table-and-get-selected-cell)
+- [Learning about dash](#dash)  
 
 # Installing :
 ```
@@ -225,7 +226,7 @@ def myfun(x):
 
 ## Dash
 
-Go to this link to learn about [Dash][].
+Go to this link to learn about [Dash][https://plot.ly/dash/].
 
 ## Getting started
 
