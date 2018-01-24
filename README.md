@@ -226,7 +226,7 @@ def myfun(x):
 
 ## Dash
 
-Go to this link to learn about [Dash][https://plot.ly/dash/].
+Go to this link to learn about [Dash](https://plot.ly/dash/).
 
 ## Getting started
 
