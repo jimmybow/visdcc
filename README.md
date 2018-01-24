@@ -9,6 +9,7 @@ Dash Core Components for Visualization.
   - [Get Selected Nodes and Edges](#get-selected-nodes-and-edges-)
   - [Animate or move the camera](#animate-or-move-the-camera-)
 - [visdcc.DataTable](#2-visdccdatatable-)  
+  - [Plot Basic Table and Get Selected Cell](#plot-basic-table-and-get-selected-cell)
 
 # Installing :
 ```
