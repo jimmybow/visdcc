@@ -36,7 +36,7 @@ if __name__ == '__main__':
 
 # 1. visdcc.Network : 
 
-Plot basic network
+Plot Basic Network
 ```
 app.layout = html.Div([
       visdcc.Network(id = 'net', 
@@ -148,6 +148,65 @@ def myfun(x):
 
 # 2. visdcc.DataTable : 
 
+Plot Basic Table and Get Selected Cell
+```
+app = dash.Dash()
+
+DF_SIMPLE = {'dataSource':[{'key': 1, 'name': 'Jacky', 'age': 20},
+                           {'key': 2, 'name': 'Mei'  , 'age': 18},
+                           {'key': 3, 'name': 'Jay', 'age': 72},
+                           {'key': 4, 'name': 'Sandy'  , 'age': 14},
+                           {'key': 5, 'name': 'Jerry', 'age': 56},
+                           {'key': 6, 'name': 'May'  , 'age': 22},
+                           {'key': 7, 'name': 'Jimmy', 'age': 34},
+                           {'key': 8, 'name': 'Jeff'  , 'age': 28},
+                           {'key': 9, 'name': 'Bob', 'age': 15} ],
+             'columns':[{'title': 'Names',
+                         'dataIndex': 'name',
+                         'key': 'name',
+                         'Is_sort': True, 
+                         'Is_click': True    },
+					            {'title': 'Ages',
+                         'dataIndex': 'age',
+                         'key': 'age',
+                         'Is_sort': True,
+                         'Is_click': True}]
+             }    
+
+my_css_url = "https://unpkg.com/antd@3.1.1/dist/antd.css"
+app.css.append_css({
+    "external_url": my_css_url
+})
+           
+app.config['suppress_callback_exceptions'] = True
+
+app.layout = html.Div([
+    html.Div(id = 'text1'),
+    visdcc.DataTable(id = 'table' ,
+                     box_type = 'ratio',
+                     data = DF_SIMPLE,
+                     scroll = {'y':200},
+                     pagination = {'pageSize': 5},
+                     style = {'width':'50%'}      ),
+    html.Div(id = 'text2')
+])
+           
+@app.callback(
+    Output('text1', 'children'),
+    [Input('table', 'box_selected_keys')])
+def myfun(x): 
+    if x == None  : return('')
+    if len(x) == 1: return(x)
+    else          : return(', '.join([str(i) for i in x])  )
+    
+@app.callback(
+    Output('text2', 'children'),
+    [Input('table', 'selectedcell')])
+def myfun(x): 
+    if x == None  : return('')
+    else          : return('Clicked cell is row : {} col : {}'.format(x['row'], x['col'])  )    
+
+```
 
 ## Dash
 
