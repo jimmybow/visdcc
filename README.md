@@ -74,7 +74,7 @@ def myfun(x):
     return {'nodes':{'color': x}}
 ```
 
-# 2. Get Selected Nodes and Edges :
+Get Selected Nodes and Edges :
 
 ```
 app.layout = html.Div([
@@ -102,7 +102,7 @@ def myfun(x):
     return s
 ```
 
-# 3. Animate or move the camera :
+Animate or move the camera :
 
 ```
 app = dash.Dash()
@@ -145,6 +145,9 @@ def myfun(x):
     if x == '': return({'Is_used': False})
     else: return({'nodes': [x], 'animation': True})
 ```
+
+# 2. visdcc.DataTable : 
+
 
 ## Dash
 
