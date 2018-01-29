@@ -212,7 +212,6 @@ app.layout = html.Div([
     [Input('table', 'box_selected_keys')])
 def myfun(x): 
     if x == None  : return('')
-    if len(x) == 1: return(x)
     else          : return(', '.join([str(i) for i in x])  )
     
 @app.callback(
