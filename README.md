@@ -49,7 +49,7 @@ See documents of vis.js : http://visjs.org/docs/network/
 
 CSS : https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis.min.css
 
-### Plot basic network
+### Plot basic network :
 ```
 app.layout = html.Div([
       visdcc.Network(id = 'net', 
@@ -164,7 +164,7 @@ See documents of antd.js : https://ant.design/components/table/
 
 CSS : https://unpkg.com/antd@3.1.1/dist/antd.css
 
-### Plot basic table and get selected cell
+### Plot basic table and get selected cell :
 ```
 app = dash.Dash()
 
