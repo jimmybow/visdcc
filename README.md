@@ -182,12 +182,12 @@ DF_SIMPLE = {'dataSource':[{'key': 1, 'name': 'Jacky', 'age': 20},
                          'key': 'name',
                          'Is_sort': True, 
                          'Is_click': True    },
-					            {'title': 'Ages',
+			{'title': 'Ages',
                          'dataIndex': 'age',
                          'key': 'age',
                          'Is_sort': True,
-                         'Is_click': True}]
-             }    
+                         'Is_click': True    }]
+             }
 
 my_css_url = "https://unpkg.com/antd@3.1.1/dist/antd.css"
 app.css.append_css({
