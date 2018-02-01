@@ -8,8 +8,8 @@ Dash Core Components for Visualization.
   - [Plot basic network](#plot-basic-network-)
   - [Get selected nodes and edges](#get-selected-nodes-and-edges-)
   - [Animate or move the camera](#animate-or-move-the-camera-)
-- [visdcc.DataTable](#2-visdccdatatable-)  
-  - [Plot basic table and get selected cell](#plot-basic-table-and-get-selected-cell-)
+- [visdcc.DataTable](#2-visdccdatatable-)
+  - [Plot basic table and get selected cell](#plot-basic-table-and-get-selected-cell-)
 - [Learning more about dash ...](#dash)  
 
 # Installing :
