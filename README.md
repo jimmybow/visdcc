@@ -5,7 +5,7 @@ Dash Core Components for Visualization.
 - [Requirements](#requirements)
 - [Usage](#usage-)
 - [visdcc.Network](#1-visdccnetwork-)
-  - [Plot basic network](#plot-basic-network-)
+  - [Plot basic network](#plot-basic-network-)
   - [Get selected nodes and edges](#get-selected-nodes-and-edges-)
   - [Animate or move the camera](#animate-or-move-the-camera-)
 - [visdcc.DataTable](#2-visdccdatatable-)  
