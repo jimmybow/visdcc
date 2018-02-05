@@ -161,8 +161,9 @@ def myfun(x):
 
 # 2. visdcc.DataTable : 
 See documents of antd.js : https://ant.design/components/table/
-Using regular expressionyou to filter string
-Using logic expression like "x > 20 & x < 70" to filter number  
+
+  - Using regular expressionyou to filter string.
+  - Using logic expression like "x > 20 & x < 70" to filter number.
 
 CSS : 
   - https://unpkg.com/antd@3.1.1/dist/antd.css
