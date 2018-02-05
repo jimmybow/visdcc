@@ -162,8 +162,10 @@ def myfun(x):
 # 2. visdcc.DataTable : 
 See documents of antd.js : https://ant.design/components/table/
 
-CSS : https://unpkg.com/antd@3.1.1/dist/antd.css
-
+CSS : 
+  - https://unpkg.com/antd@3.1.1/dist/antd.css
+  - https://rawgit.com/jimmybow/CSS/master/visdcc/DataTable/Filter.css
+  
 ### Plot basic table and get selected cell :
 ```
 app = dash.Dash()
