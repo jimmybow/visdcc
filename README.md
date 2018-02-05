@@ -188,15 +188,12 @@ DF_SIMPLE = {'dataSource':[{'key': 1, 'name': 'Jacky', 'age': 20},
                          'Is_sort': True,
                          'Is_click': True    }]
              }
-
-my_css_url = "https://unpkg.com/antd@3.1.1/dist/antd.css"
-app.css.append_css({
-    "external_url": my_css_url
-})
-           
+          
 app.config['suppress_callback_exceptions'] = True
 
 app.layout = html.Div([
+    html.Link(href='https://unpkg.com/antd@3.1.1/dist/antd.css', rel='stylesheet'), 
+    html.Link(href='https://rawgit.com/jimmybow/CSS/master/visdcc/DataTable/Filter.css', rel='stylesheet'), 
     html.Div(id = 'text1'),
     visdcc.DataTable(id = 'table' ,
                      box_type = 'radio',
