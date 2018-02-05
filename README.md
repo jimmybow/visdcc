@@ -118,7 +118,6 @@ def myfun(x):
 ### Animate or move the camera :
 
 ```
-app = dash.Dash()
 app.layout = html.Div([
       visdcc.Network(id = 'net', 
                      options = dict(height= '600px', width= '100%')),
@@ -170,9 +169,7 @@ CSS :
   
 ### Plot basic table and get selected cell :
 ```
-app = dash.Dash()
-
-DF_SIMPLE = {'dataSource':[{'key': 1, 'name': 'Jacky', 'age': 20},
+DF_SAMPLE = {'dataSource':[{'key': 1, 'name': 'Jacky', 'age': 20},
                            {'key': 2, 'name': 'Mei'  , 'age': 18},
                            {'key': 3, 'name': 'Jay', 'age': 72},
                            {'key': 4, 'name': 'Sandy'  , 'age': 14},
@@ -201,7 +198,7 @@ app.layout = html.Div([
     html.Div(id = 'text1'),
     visdcc.DataTable(id = 'table' ,
                      box_type = 'radio',
-                     data = DF_SIMPLE,
+                     data = DF_SAMPLE,
                      scroll = {'y':200},
                      pagination = {'pageSize': 5},
                      style = {'width':'50%'}      ),
