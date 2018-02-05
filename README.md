@@ -1,16 +1,6 @@
 # Visdcc
-Dash Core Components for Visualization.
-
-- [Installing](#installing-)
-- [Requirements](#requirements)
-- [Usage](#usage-)
-- [visdcc.Network](#1-visdccnetwork-)
-  - [Plot basic network](#plot-basic-network-)
-  - [Get selected nodes and edges](#get-selected-nodes-and-edges-)
-  - [Animate or move the camera](#animate-or-move-the-camera-)
-- [visdcc.DataTable](#2-visdccdatatable-)
-  - [Plot basic table and get selected cell](#plot-basic-table-and-get-selected-cell-)
-- [Learning more about dash ...](#dash)  
+Dash Core Components for vis.js <br/> 
+Documents of vis.js : http://visjs.org/docs/network/
 
 # Installing :
 ```
@@ -45,11 +35,8 @@ if __name__ == '__main__':
 ```
 
 # 1. visdcc.Network : 
-See documents of vis.js : http://visjs.org/docs/network/
 
-CSS : https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis.min.css
-
-### Plot basic network :
+Plot basic network
 ```
 app.layout = html.Div([
       visdcc.Network(id = 'net', 
@@ -87,7 +74,7 @@ def myfun(x):
     return {'nodes':{'color': x}}
 ```
 
-### Get selected nodes and edges :
+# 2. Get Selected Nodes and Edges :
 
 ```
 app.layout = html.Div([
@@ -115,7 +102,7 @@ def myfun(x):
     return s
 ```
 
-### Animate or move the camera :
+# 3. Animate or move the camera :
 
 ```
 app = dash.Dash()
@@ -155,77 +142,13 @@ def myfun(z, x, y):
     Output('net', 'fit'),
     [Input('node', 'value')])
 def myfun(x):
-    if x == '': return({'Is_used': False})
-    else: return({'nodes': [x], 'animation': True})
-```
-
-# 2. visdcc.DataTable : 
-See documents of antd.js : https://ant.design/components/table/
-
-CSS : https://unpkg.com/antd@3.1.1/dist/antd.css
-
-### Plot basic table and get selected cell :
-```
-app = dash.Dash()
-
-DF_SIMPLE = {'dataSource':[{'key': 1, 'name': 'Jacky', 'age': 20},
-                           {'key': 2, 'name': 'Mei'  , 'age': 18},
-                           {'key': 3, 'name': 'Jay', 'age': 72},
-                           {'key': 4, 'name': 'Sandy'  , 'age': 14},
-                           {'key': 5, 'name': 'Jerry', 'age': 56},
-                           {'key': 6, 'name': 'May'  , 'age': 22},
-                           {'key': 7, 'name': 'Jimmy', 'age': 34},
-                           {'key': 8, 'name': 'Jeff'  , 'age': 28},
-                           {'key': 9, 'name': 'Bob', 'age': 15} ],
-             'columns':[{'title': 'Names',
-                         'dataIndex': 'name',
-                         'key': 'name',
-                         'Is_sort': True, 
-                         'Is_click': True    },
-			{'title': 'Ages',
-                         'dataIndex': 'age',
-                         'key': 'age',
-                         'Is_sort': True,
-                         'Is_click': True    }]
-             }
-
-my_css_url = "https://unpkg.com/antd@3.1.1/dist/antd.css"
-app.css.append_css({
-    "external_url": my_css_url
-})
-           
-app.config['suppress_callback_exceptions'] = True
-
-app.layout = html.Div([
-    html.Div(id = 'text1'),
-    visdcc.DataTable(id = 'table' ,
-                     box_type = 'radio',
-                     data = DF_SIMPLE,
-                     scroll = {'y':200},
-                     pagination = {'pageSize': 5},
-                     style = {'width':'50%'}      ),
-    html.Div(id = 'text2')
-])
-           
-@app.callback(
-    Output('text1', 'children'),
-    [Input('table', 'box_selected_keys')])
-def myfun(x): 
-    if x == None  : return('')
-    else          : return(', '.join([str(i) for i in x])  )
-    
-@app.callback(
-    Output('text2', 'children'),
-    [Input('table', 'selectedcell')])
-def myfun(x): 
-    if x == None  : return('')
-    else          : return('Clicked cell is row : {} col : {}'.format(x['row'], x['col'])  )    
-
+    if x == '': x = None
+    return {'nodes': [x]}
 ```
 
 ## Dash
 
-Go to this link to learn about [Dash](https://plot.ly/dash/).
+Go to this link to learn about [Dash][].
 
 ## Getting started
 

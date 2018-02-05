@@ -4,6 +4,42 @@
     "displayName": "DataTable",
     "methods": [
       {
+        "name": "onInputChange",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "j",
+            "type": null
+          },
+          {
+            "name": "e",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "onSearch",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "col",
+            "type": null
+          },
+          {
+            "name": "col_name",
+            "type": null
+          },
+          {
+            "name": "e",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
         "name": "handleClick",
         "docblock": null,
         "modifiers": [],
@@ -46,6 +82,30 @@
           }
         ],
         "returns": null
+      },
+      {
+        "name": "gg_filterVisibleChange",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "col",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "gg_filterDropdown",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "col",
+            "type": null
+          }
+        ],
+        "returns": null
       }
     ],
     "props": {
@@ -79,11 +139,7 @@
           "name": "object"
         },
         "required": false,
-        "description": "",
-        "defaultValue": {
-          "value": "{pageSize: 10}",
-          "computed": false
-        }
+        "description": ""
       },
       "scroll": {
         "type": {
@@ -149,6 +205,20 @@
       "box_type": {
         "type": {
           "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "size": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "locale": {
+        "type": {
+          "name": "object"
         },
         "required": false,
         "description": ""

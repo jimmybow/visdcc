@@ -1,12 +1,61 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { Table } from 'antd';
+import { Table, Input, Button, Icon } from 'antd';
 
 export default class DataTable extends Component {
     constructor(props) {
         super(props); 
+        this.state = {
+            filterDropdownVisible: this.props.data.columns.map(x => false),
+            filtered: this.props.data.columns.map(x => false),
+            searchText :this.props.data.columns.map(x => ''),
+            data_filtered: this.props.data.dataSource
+        }
 	}
 	
+    onInputChange(j, e){
+        var value = this.state.searchText
+        value[j] = e.target.value 
+        this.setState({
+            searchText: value
+        })        
+    }
+    
+    onSearch(col, col_name, e){
+        const {data} = this.props;
+        const reg2 = new RegExp('x', 'gi')
+        var filterDropdownVisible_value = this.state.filterDropdownVisible
+        var filtered_value = this.state.filtered
+        
+        filterDropdownVisible_value[col]= false
+        filtered_value[col]= !!this.state.searchText[col]
+        this.setState({
+            filterDropdownVisible: filterDropdownVisible_value,
+            filtered_value: filtered_value,
+            data_filtered: data.dataSource.map((record) => {
+                var match = true 
+                var j=0
+                var match_list = []
+                for (j=0;j<data.columns.length;j++){
+                    var reg = new RegExp(this.state.searchText[j], 'gi');
+                    if (typeof(record[data.columns[j].dataIndex])=='string') {match = !!record[data.columns[j].dataIndex].match(reg)}
+                    else {
+                        if (this.state.searchText[j] == '') {match = true}
+                        else { try {match = !!eval(this.state.searchText[j].replace(reg2, 'record.' + data.columns[j].dataIndex))} 
+                               catch (exception) {match = false} }       
+                    }
+                    match_list.push(match)
+                }
+
+                if (match_list.filter(x=>!x).length>0) {
+                    return null;
+                }
+                return record;
+            }).filter(record => !!record),
+        });
+    }
+    
+    
     handleClick(row, col){
 		const {setProps, selectedcell} = this.props;  		
 		if (setProps) setProps({  selectedcell: {row:row, col:col}  })
@@ -32,6 +81,32 @@ export default class DataTable extends Component {
         }
     }
     
+    gg_filterVisibleChange(col){
+        return (visible) => {
+            var value = this.state.filterDropdownVisible
+            value[col] = visible
+            this.setState({
+                filterDropdownVisible: value
+            })
+        }
+    }
+    
+    gg_filterDropdown(col){
+        const {data} = this.props;
+        return (
+        <div className="custom-filter-dropdown">
+            <Input
+                placeholder="Search"
+                value={this.state.searchText[col]}
+                onChange={(e)=>(this.onInputChange(col, e))}
+                onPressEnter={(e)=>(this.onSearch(col, data.columns[col].dataIndex, e))}
+            />
+            <Button type="primary" onClick={(e)=>(this.onSearch(col, data.columns[col].dataIndex, e))}>Search</Button>
+        </div>
+        )
+    }
+    
+        
     componentDidMount() { 
 	    const {data, setProps} = this.props;  
 		if (setProps){ 
@@ -88,28 +163,43 @@ export default class DataTable extends Component {
     
     render() {
         const {id, style, data, pagination, scroll ,bordered, showHeader, title, footer,
-               setProps, box_selected_keys, box_type} = this.props; 
-        if (title ) { var title_value  = () => title  } else { var title_value  = null }	
-        if (footer) { var footer_value = () => footer } else { var footer_value = null }
+               setProps, box_selected_keys, box_type, size, locale} = this.props; 
+        if (title )     { var title_value  = () => title    } else { var title_value  = null }	
+        if (footer)     { var footer_value = () => footer   } else { var footer_value = null }
+        if (pagination) { var pagination_value = pagination } else { var pagination_value = false }
+        if (this.state.filtered.filter(x=>x).length>0 ) { var dataSource_value = this.state.data_filtered } 
+        else { var dataSource_value = data.dataSource }
+        
         var rowSelection = {
             onChange: (selectedRowKeys) => {
                 setProps({box_selected_keys: selectedRowKeys})
             },
             type: box_type
         }
-        if (box_type == null) var rowSelection = null        
+        if (box_type == null) var rowSelection = null      
+        var j = 0;
+        var columns_value = data.columns.map(x => Object.assign({}, x))
+        for (j=0;j<data.columns.length;j++){
+            columns_value[j].filterDropdown = this.gg_filterDropdown(j)     
+			columns_value[j].filterIcon =  <Icon type="filter" style={{ color: this.state.filtered[j] ? '#108ee9' : '#aaa' }} />
+            columns_value[j].filterDropdownVisible = this.state.filterDropdownVisible[j],
+            columns_value[j].onFilterDropdownVisibleChange = this.gg_filterVisibleChange(j)
+		}
+        
         return (
             <Table id =           {id} 
                    style =        {style} 
-                   dataSource =   {data.dataSource} 
-                   columns =      {data.columns}
-                   pagination =   {pagination} 
+                   dataSource =   {dataSource_value} 
+                   columns =      {columns_value}
+                   pagination =   {pagination_value} 
                    scroll =       {scroll}
                    bordered =     {bordered}	
                    showHeader =   {showHeader}		
                    title  =       {title_value} 
                    footer =       {footer_value}
-                   rowSelection = {rowSelection}          />
+                   rowSelection = {rowSelection}
+                   size =         {size} 
+                   locale =       {locale}                   />
         );
     }
 }
@@ -126,7 +216,9 @@ DataTable.propTypes = {
     title            :PropTypes.string,
     footer           :PropTypes.string,
     box_selected_keys:PropTypes.array,
-    box_type         :PropTypes.string
+    box_type         :PropTypes.string,
+    size             :PropTypes.string,
+    locale           :PropTypes.object
 };
         
 DataTable.defaultProps = {
@@ -140,10 +232,9 @@ DataTable.defaultProps = {
                      {title: 'Ages',
                       dataIndex: 'age',
                       key: 'age'}       ]                  },
-	pagination : {pageSize: 10}, 
     scroll : { x: 300, y: 300 },
 	bordered : false,
-    showHeader: true
+    showHeader: true   
 }        
 
          
