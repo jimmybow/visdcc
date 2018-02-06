@@ -192,10 +192,10 @@ export default class DataTable extends Component {
                            filterDropdownVisible : nextProps.data.columns.map(x => false),
                            col_filtered          : nextProps.data.columns.map(x => false),
                            searchText            : nextProps.data.columns.map(x => '')      })
-            setProps({row_filtered          : nextProps.data.dataSource.map(x => true),
-                      filterDropdownVisible : nextProps.data.columns.map(x => false),
-                      col_filtered          : nextProps.data.columns.map(x => false),
-                      searchText            : nextProps.data.columns.map(x => '')      })
+            if (setProps) setProps({row_filtered          : nextProps.data.dataSource.map(x => true),
+                                    filterDropdownVisible : nextProps.data.columns.map(x => false),
+                                    col_filtered          : nextProps.data.columns.map(x => false),
+                                    searchText            : nextProps.data.columns.map(x => '')      })
         }
 	}	
     
