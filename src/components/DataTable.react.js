@@ -7,32 +7,31 @@ export default class DataTable extends Component {
         super(props); 
         this.state = {
             filterDropdownVisible: this.props.data.columns.map(x => false),
-            filtered: this.props.data.columns.map(x => false),
-            searchText :this.props.data.columns.map(x => ''),
-            data_filtered: this.props.data.dataSource
+            col_filtered         : this.props.data.columns.map(x => false),
+            searchText           :this.props.data.columns.map(x => ''),
+            row_filtered         : this.props.data.dataSource.map(x => true)
         }
-	}
+    }
 	
     onInputChange(j, e){
         var value = this.state.searchText
         value[j] = e.target.value 
-        this.setState({
-            searchText: value
-        })        
+        this.setState({ searchText: value })        
+        const {setProps} = this.props
+        if (setProps) setProps({ searchText: value })
     }
     
     onSearch(col, col_name, e){
-        const {data} = this.props;
+        const {data, setProps} = this.props;
         const reg2 = new RegExp('x', 'gi')
         var filterDropdownVisible_value = this.state.filterDropdownVisible
-        var filtered_value = this.state.filtered
+        var filtered_value = this.state.col_filtered
         
         filterDropdownVisible_value[col]= false
         filtered_value[col]= !!this.state.searchText[col]
-        this.setState({
-            filterDropdownVisible: filterDropdownVisible_value,
-            filtered_value: filtered_value,
-            data_filtered: data.dataSource.map((record) => {
+        if (filtered_value.filter(x=>x).length == 0)  var value = data.dataSource.map(x => true)
+        else {   
+            var value = data.dataSource.map((record) => {
                 var match = true 
                 var j=0
                 var match_list = []
@@ -48,11 +47,23 @@ export default class DataTable extends Component {
                 }
 
                 if (match_list.filter(x=>!x).length>0) {
-                    return null;
+                    return false;
                 }
-                return record;
-            }).filter(record => !!record),
-        });
+                return true;
+            })
+        }
+
+        this.setState({
+            filterDropdownVisible: filterDropdownVisible_value,
+            col_filtered: filtered_value,
+            row_filtered: value
+        })
+        
+        if (setProps) setProps({
+            filterDropdownVisible: filterDropdownVisible_value,
+            col_filtered: filtered_value,
+            row_filtered: value
+        })
     }
     
     
@@ -88,6 +99,8 @@ export default class DataTable extends Component {
             this.setState({
                 filterDropdownVisible: value
             })
+            const {setProps} = this.props
+            if (setProps) setProps({ filterDropdownVisible: value })
         }
     }
     
@@ -128,11 +141,25 @@ export default class DataTable extends Component {
 			    new_data.columns[cols_sort[j]].sorter = cols_f[cols_sort[j]]
 			}	
 
-			setProps({data:new_data})     
+            this.setState({
+                filterDropdownVisible: new_data.columns.map(x => false),
+                col_filtered: new_data.columns.map(x => false),
+                searchText: new_data.columns.map(x => ''),
+                row_filtered: new_data.dataSource.map(x => true)
+            })
+            
+			setProps({data                  : new_data,
+                      row_filtered          : new_data.dataSource.map(x => true),
+                      filterDropdownVisible : new_data.columns.map(x => false),
+                      col_filtered          : new_data.columns.map(x => false),
+                      searchText            : new_data.columns.map(x => '')                           })
+
+            
 		}    
     }
 	
     componentWillReceiveProps(nextProps) {
+        const {data, setProps} = this.props;
 		var col_render_counts = [];
         var col_sorter_counts = [];
 		var cols_index = [];
@@ -158,7 +185,18 @@ export default class DataTable extends Component {
             for (j=0;j<cols_sort.length;j++){
 			    new_data.columns[cols_sort[j]].sorter = cols_f[cols_sort[j]]
 			}
-		}       
+		}  
+
+        if (JSON.stringify(nextProps.data.dataSource) != JSON.stringify(data.dataSource)) {
+            this.setState({row_filtered          : nextProps.data.dataSource.map(x => true),
+                           filterDropdownVisible : nextProps.data.columns.map(x => false),
+                           col_filtered          : nextProps.data.columns.map(x => false),
+                           searchText            : nextProps.data.columns.map(x => '')      })
+            setProps({row_filtered          : nextProps.data.dataSource.map(x => true),
+                      filterDropdownVisible : nextProps.data.columns.map(x => false),
+                      col_filtered          : nextProps.data.columns.map(x => false),
+                      searchText            : nextProps.data.columns.map(x => '')      })
+        }
 	}	
     
     render() {
@@ -167,7 +205,7 @@ export default class DataTable extends Component {
         if (title )     { var title_value  = () => title    } else { var title_value  = null }	
         if (footer)     { var footer_value = () => footer   } else { var footer_value = null }
         if (pagination) { var pagination_value = pagination } else { var pagination_value = false }
-        if (this.state.filtered.filter(x=>x).length>0 ) { var dataSource_value = this.state.data_filtered } 
+        if (this.state.col_filtered.filter(x=>x).length>0 ) { var dataSource_value = data.dataSource.filter((x, index) => this.state.row_filtered[index])  } 
         else { var dataSource_value = data.dataSource }
         
         var rowSelection = {
@@ -181,7 +219,7 @@ export default class DataTable extends Component {
         var columns_value = data.columns.map(x => Object.assign({}, x))
         for (j=0;j<data.columns.length;j++){
             columns_value[j].filterDropdown = this.gg_filterDropdown(j)     
-			columns_value[j].filterIcon =  <Icon type="filter" style={{ color: this.state.filtered[j] ? '#108ee9' : '#aaa' }} />
+			columns_value[j].filterIcon =  <Icon type="filter" style={{ color: this.state.col_filtered[j] ? '#108ee9' : '#aaa' }} />
             columns_value[j].filterDropdownVisible = this.state.filterDropdownVisible[j],
             columns_value[j].onFilterDropdownVisibleChange = this.gg_filterVisibleChange(j)
 		}
@@ -218,7 +256,11 @@ DataTable.propTypes = {
     box_selected_keys:PropTypes.array,
     box_type         :PropTypes.string,
     size             :PropTypes.string,
-    locale           :PropTypes.object
+    locale           :PropTypes.object,
+    row_filtered     :PropTypes.array,
+    searchText       :PropTypes.array,
+    col_filtered     :PropTypes.array,
+    filterDropdownVisible:PropTypes.array
 };
         
 DataTable.defaultProps = {
@@ -233,8 +275,6 @@ DataTable.defaultProps = {
                       dataIndex: 'age',
                       key: 'age'}       ]                  },
     scroll : { x: 300, y: 300 },
-	bordered : false,
+    bordered : false,
     showHeader: true   
 }        
-
-         

@@ -202,7 +202,10 @@ app.layout = html.Div([
                      pagination = {'pageSize': 5},
                      style      = {'width':'50%'}  ),
     html.Div(id = 'text1'),                 
-    html.Div(id = 'text2')
+    html.Div(id = 'text2'),
+    html.Div(id = 'text3'),
+    html.Div(id = 'text4'),
+    html.Div(id = 'text5')
 ])
            
 @app.callback(
@@ -217,7 +220,28 @@ def myfun(x):
     [Input('table', 'selectedcell')])
 def myfun(x): 
     if x == None  : return('')
-    else          : return('Clicked cell is row : {} col : {}'.format(x['row'], x['col'])  )       
+    else          : return('Clicked cell is on row : {} col : {}'.format(x['row'], x['col'])  )    
+
+@app.callback(
+    Output('text3', 'children'),
+    [Input('table', 'row_filtered')])
+def myfun(x): 
+    if x == None  : return('')
+    else          : return("row_filtered are " + str(x) ) 
+    
+@app.callback(
+    Output('text4', 'children'),
+    [Input('table', 'col_filtered')])
+def myfun(x): 
+    if x == None  : return('')
+    else          : return("col_filtered are " + str(x) )     
+    
+@app.callback(
+    Output('text5', 'children'),
+    [Input('table', 'searchText')])
+def myfun(x): 
+    if x == None  : return('')
+    else          : return("searchText are " + str(x) )       
 
 ```
 

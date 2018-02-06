@@ -222,6 +222,34 @@
         },
         "required": false,
         "description": ""
+      },
+      "row_filtered": {
+        "type": {
+          "name": "array"
+        },
+        "required": false,
+        "description": ""
+      },
+      "searchText": {
+        "type": {
+          "name": "array"
+        },
+        "required": false,
+        "description": ""
+      },
+      "col_filtered": {
+        "type": {
+          "name": "array"
+        },
+        "required": false,
+        "description": ""
+      },
+      "filterDropdownVisible": {
+        "type": {
+          "name": "array"
+        },
+        "required": false,
+        "description": ""
       }
     }
   },
