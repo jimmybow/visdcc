@@ -195,13 +195,13 @@ app.config['suppress_callback_exceptions'] = True
 app.layout = html.Div([
     html.Link(href='https://unpkg.com/antd@3.1.1/dist/antd.css', rel='stylesheet'), 
     html.Link(href='https://rawgit.com/jimmybow/CSS/master/visdcc/DataTable/Filter.css', rel='stylesheet'), 
-    html.Div(id = 'text1'),
-    visdcc.DataTable(id = 'table' ,
-                     box_type = 'radio',
-                     data = DF_SAMPLE,
-                     scroll = {'y':200},
+    visdcc.DataTable(id         = 'table' ,
+                     box_type   = 'radio',
+                     data       = DF_SAMPLE,
+                     scroll     = {'y':200},
                      pagination = {'pageSize': 5},
-                     style = {'width':'50%'}      ),
+                     style      = {'width':'50%'}  ),
+    html.Div(id = 'text1'),                 
     html.Div(id = 'text2')
 ])
            
@@ -210,14 +210,14 @@ app.layout = html.Div([
     [Input('table', 'box_selected_keys')])
 def myfun(x): 
     if x == None  : return('')
-    else          : return(', '.join([str(i) for i in x])  )
+    else          : return("Selected row key is " + ', '.join([str(i) for i in x])  )
     
 @app.callback(
     Output('text2', 'children'),
     [Input('table', 'selectedcell')])
 def myfun(x): 
     if x == None  : return('')
-    else          : return('Clicked cell is row : {} col : {}'.format(x['row'], x['col'])  )    
+    else          : return('Clicked cell is row : {} col : {}'.format(x['row'], x['col'])  )       
 
 ```
 
