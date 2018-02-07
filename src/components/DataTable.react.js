@@ -187,7 +187,8 @@ export default class DataTable extends Component {
 			}
 		}  
 
-        if (JSON.stringify(nextProps.data.dataSource) != JSON.stringify(data.dataSource)) {
+        if (( JSON.stringify(nextProps.data.dataSource)                  != JSON.stringify(data.dataSource)                  ) |
+            ( JSON.stringify(nextProps.data.columns.map(x=>x.dataIndex)) != JSON.stringify(data.columns.map(x=>x.dataIndex)) )   ){
             this.setState({row_filtered          : nextProps.data.dataSource.map(x => true),
                            filterDropdownVisible : nextProps.data.columns.map(x => false),
                            col_filtered          : nextProps.data.columns.map(x => false),
@@ -205,7 +206,10 @@ export default class DataTable extends Component {
         if (title )     { var title_value  = () => title    } else { var title_value  = null }	
         if (footer)     { var footer_value = () => footer   } else { var footer_value = null }
         if (pagination) { var pagination_value = pagination } else { var pagination_value = false }
-        if (this.state.col_filtered.filter(x=>x).length>0 ) { var dataSource_value = data.dataSource.filter((x, index) => this.state.row_filtered[index])  } 
+        if (this.state.col_filtered.filter(x=>x).length>0 ) { 
+            var dataSource_value = data.dataSource.filter((x, index) => this.state.row_filtered[index]) 
+            if (dataSource_value.length == 0) dataSource_value = [{}]
+        } 
         else { var dataSource_value = data.dataSource }
         
         var rowSelection = {
