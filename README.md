@@ -24,6 +24,7 @@ pip install visdcc
 * **dash-html-components** -- HTML components
 * **dash-core-components** -- Supercharged components
 
+[↑](#mydcc)
 # Usage :
 ```
 import dash
@@ -43,12 +44,13 @@ def myfun(...):
 if __name__ == '__main__':
     app.run_server()
 ```
-
+[↑](#mydcc)
 # 1. visdcc.Network : 
 See documents of vis.js : http://visjs.org/docs/network/
 
 CSS : https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis.min.css
 
+[↑](#mydcc)
 ### Plot basic network :
 ```
 app.layout = html.Div([
@@ -157,7 +159,7 @@ def myfun(x):
     if x == '': return({'Is_used': False})
     else: return({'nodes': [x], 'animation': True})
 ```
-
+[↑](#mydcc)
 # 2. visdcc.DataTable : 
 See documents of antd.js : https://ant.design/components/table/
   - Using regular expression to filter the string.
@@ -244,6 +246,6 @@ def myfun(x):
     else          : return("searchText are " + str(x) )       
 
 ```
-
+[↑](#mydcc)
 ## Dash
 Go to this link to learn about [Dash](https://plot.ly/dash/).
