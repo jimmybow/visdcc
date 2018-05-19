@@ -3,7 +3,7 @@ Dash Core Components for Visualization.
 
 - [Installing](#installing-)
 - [Requirements](#requirements)
-- [Usage](#usage-)<br>
+- [Usage](#usage-)
   - [visdcc.Network](#1-visdccnetwork-)
     - [Plot basic network](#plot-basic-network-)
     - [Get selected nodes and edges](#get-selected-nodes-and-edges-)
@@ -24,7 +24,7 @@ pip install visdcc
 * **dash-html-components** -- HTML components
 * **dash-core-components** -- Supercharged components
 
-[↑](#mydcc)
+[↑](#visdcc)
 # Usage :
 ```
 import dash
@@ -44,13 +44,13 @@ def myfun(...):
 if __name__ == '__main__':
     app.run_server()
 ```
-[↑](#mydcc)
+[↑](#visdcc)
 # 1. visdcc.Network : 
 See documents of vis.js : http://visjs.org/docs/network/
 
 CSS : https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis.min.css
 
-[↑](#mydcc)
+[↑](#visdcc)
 ### Plot basic network :
 ```
 app.layout = html.Div([
@@ -88,7 +88,7 @@ def myfun(x):
 def myfun(x):
     return {'nodes':{'color': x}}
 ```
-
+[↑](#visdcc)
 ### Get selected nodes and edges :
 
 ```
@@ -116,7 +116,7 @@ def myfun(x):
     if len(x['edges']) > 0 : s = [s] + [html.Div(i) for i in x['edges']]
     return s
 ```
-
+[↑](#visdcc)
 ### Animate or move the camera :
 
 ```
@@ -159,7 +159,7 @@ def myfun(x):
     if x == '': return({'Is_used': False})
     else: return({'nodes': [x], 'animation': True})
 ```
-[↑](#mydcc)
+[↑](#visdcc)
 # 2. visdcc.DataTable : 
 See documents of antd.js : https://ant.design/components/table/
   - Using regular expression to filter the string.
@@ -168,7 +168,8 @@ See documents of antd.js : https://ant.design/components/table/
 CSS : 
   - https://unpkg.com/antd@3.1.1/dist/antd.css
   - https://rawgit.com/jimmybow/CSS/master/visdcc/DataTable/Filter.css
-  
+
+[↑](#visdcc)
 ### Plot basic table and get selected cell :
 ```
 DF_SAMPLE = {'dataSource':[{'key': 1, 'name': 'Jacky', 'age': 20},
@@ -246,6 +247,6 @@ def myfun(x):
     else          : return("searchText are " + str(x) )       
 
 ```
-[↑](#mydcc)
+[↑](#visdcc)
 ## Dash
 Go to this link to learn about [Dash](https://plot.ly/dash/).
