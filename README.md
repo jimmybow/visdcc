@@ -172,38 +172,43 @@ CSS :
 [↑](#visdcc)
 ### Plot basic table and get selected cell :
 ```
-DF_SAMPLE = {'dataSource':[{'key': 1, 'name': 'Jacky', 'age': 20},
-                           {'key': 2, 'name': 'Mei'  , 'age': 18},
-                           {'key': 3, 'name': 'Jay', 'age': 72},
-                           {'key': 4, 'name': 'Sandy'  , 'age': 14},
-                           {'key': 5, 'name': 'Jerry', 'age': 56},
-                           {'key': 6, 'name': 'May'  , 'age': 22},
-                           {'key': 7, 'name': 'Jimmy', 'age': 34},
-                           {'key': 8, 'name': 'Jeff'  , 'age': 28},
-                           {'key': 9, 'name': 'Bob', 'age': 15} ],
-             'columns':[{'title': 'Names',
-                         'dataIndex': 'name',
-                         'key': 'name',
-                         'Is_sort': True, 
-                         'Is_click': True    },
-			{'title': 'Ages',
-                         'dataIndex': 'age',
-                         'key': 'age',
-                         'Is_sort': True,
-                         'Is_click': True    }]
-             }
-          
-app.config['suppress_callback_exceptions'] = True
+external_stylesheets = ['https://unpkg.com/antd@3.1.1/dist/antd.css',
+                        'https://rawgit.com/jimmybow/CSS/master/visdcc/DataTable/Filter.css']
+
+Data_Sample = {
+    'dataSource':[  {'key': 1, 'name': 'Jacky', 'age': 20},
+                    {'key': 2, 'name': 'Mei'  , 'age': 18},
+                    {'key': 3, 'name': 'Jay', 'age': 72},
+                    {'key': 4, 'name': 'Sandy'  , 'age': 14},
+                    {'key': 5, 'name': 'Jerry', 'age': 56},
+                    {'key': 6, 'name': 'May'  , 'age': 22},
+                    {'key': 7, 'name': 'Jimmy', 'age': 34},
+                    {'key': 8, 'name': 'Jeff'  , 'age': 28},
+                    {'key': 9, 'name': 'Bob', 'age': 15}     ],
+    'columns':[{'title': 'Names',
+                'dataIndex': 'name',
+                'key': 'name',
+                'Is_sort': True, 
+                'Is_click': True,
+                'width': 120,
+                'fixed': True    },
+               {'title': 'Ages',
+                'dataIndex': 'age',
+                'key': 'age',
+                'Is_sort': True,
+                'Is_click': True }  ]
+}
+
+app = dash.Dash(external_stylesheets = external_stylesheets)
 
 app.layout = html.Div([
-    html.Link(href='https://unpkg.com/antd@3.1.1/dist/antd.css', rel='stylesheet'), 
-    html.Link(href='https://rawgit.com/jimmybow/CSS/master/visdcc/DataTable/Filter.css', rel='stylesheet'), 
     visdcc.DataTable(id         = 'table' ,
                      box_type   = 'radio',
-                     data       = DF_SAMPLE,
-                     scroll     = {'y':200},
+                     data       = Data_Sample,
+                     scroll     = {'x':600,'y':400},
                      pagination = {'pageSize': 5},
-                     style      = {'width':'50%'}  ),
+                     style      = {'width':'25%'} 
+                     ),
     html.Div(id = 'text1'),                 
     html.Div(id = 'text2'),
     html.Div(id = 'text3'),
