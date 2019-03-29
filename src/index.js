@@ -1,10 +1,10 @@
 /* eslint-disable import/prefer-default-export */
-import ExampleComponent from './components/ExampleComponent.react';
+import Run_js from './components/Run_js.react';
 import Network from './components/Network.react';
 import DataTable from './components/DataTable.react';
 
 export {
-    ExampleComponent,
+    Run_js,
     Network,
 	DataTable
 };

@@ -10,6 +10,8 @@ Dash Core Components for Visualization.
     - [Animate or move the camera](#animate-or-move-the-camera-)
   - [visdcc.DataTable](#2-visdccdatatable-)
     - [Plot basic table and get selected cell](#plot-basic-table-and-get-selected-cell-)
+  - [visdcc.Run_js](#3-visdccrunjs-)
+    - [Open url on new window](#open-url-on-new-window-)
 - [Learning more about dash ...](#dash)  
 
 # Installing :
@@ -30,7 +32,7 @@ pip install visdcc
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
-from dash.dependencies import Input, Output, Event, State
+from dash.dependencies import Input, Output, State
 import visdcc
 
 app = dash.Dash()
@@ -251,6 +253,25 @@ def myfun(x):
     if x == None  : return('')
     else          : return("searchText are " + str(x) )       
 
+```
+[↑](#visdcc)
+# 3. visdcc.Run_js : 
+Run your javascript !
+
+### Open url on new window :
+```
+app.layout = html.Div([
+    html.Button('open url', id = 'button'),
+    visdcc.Run_js(id = 'javascript')
+])
+           
+@app.callback(
+    Output('javascript', 'run'),
+    [Input('button', 'n_clicks')])
+def myfun(x): 
+    if x: 
+        return "window.open('https://yahoo.com/')"
+    return ""
 ```
 [↑](#visdcc)
 ## Dash
