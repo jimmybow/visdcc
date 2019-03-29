@@ -10,7 +10,7 @@ Dash Core Components for Visualization.
     - [Animate or move the camera](#animate-or-move-the-camera-)
   - [visdcc.DataTable](#2-visdccdatatable-)
     - [Plot basic table and get selected cell](#plot-basic-table-and-get-selected-cell-)
-  - [visdcc.Run_js](#3-visdccrunjs-)
+  - [visdcc.Run_js](#3-visdccrun_js-)
     - [Open url on new window](#open-url-on-new-window-)
 - [Learning more about dash ...](#dash)  
 
