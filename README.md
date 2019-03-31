@@ -12,6 +12,7 @@ Dash Core Components for Visualization.
     - [Plot basic table and get selected cell](#plot-basic-table-and-get-selected-cell-)
   - [visdcc.Run_js](#3-visdccrun_js-)
     - [Open url on new window](#open-url-on-new-window-)
+    - [Apply jQuery Datatables](#apply-jquery-datatables-)
 - [Learning more about dash ...](#dash)  
 
 # Installing :
@@ -257,7 +258,7 @@ def myfun(x):
 [↑](#visdcc)
 # 3. visdcc.Run_js : 
 Run your javascript !
-[↑](#visdcc)
+
 ### Open url on new window :
 ```
 app.layout = html.Div([
