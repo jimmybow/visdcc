@@ -34,7 +34,6 @@
     "extend": "^3.0.2",
     "growl": "^1.10.5",
     "lodash": "^4.17.11",
-    "parsejson": "0.0.3",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -44,7 +43,6 @@
   "deprecated": false,
   "description": "visdcc",
   "devDependencies": {
-    "dash-components-archetype-dev": "^0.2.7",
     "enzyme": "^3.9.0",
     "react-test-renderer": "^16.8.6"
   },
