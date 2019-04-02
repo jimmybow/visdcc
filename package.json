@@ -1,6 +1,6 @@
 {
   "_from": "visdcc",
-  "_id": "visdcc@0.0.35",
+  "_id": "visdcc@0.0.40",
   "_inBundle": false,
   "_integrity": "sha512-OW/eWJqRjtxChwq8M/8/v0LJup8hqGjiVcdqnGaQAQ38tmkTnDiYPoQ5ibfK9EqnUf+Y4D6v3aUSFylx2c6p0g==",
   "_location": "/visdcc",
@@ -64,5 +64,5 @@
     "test-watch": "builder run test-frontend-watch",
     "uninstall-local": "pip uninstall visdcc -y"
   },
-  "version": "0.0.4"
+  "version": "0.0.40"
 }
