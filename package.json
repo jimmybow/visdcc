@@ -31,10 +31,15 @@
     "antd": "^3.16.1",
     "builder": "^4.0.0",
     "dash-components-archetype": "^0.2.7",
+    "extend": "^3.0.2",
+    "growl": "^1.10.5",
+    "lodash": "^4.17.11",
+    "parsejson": "0.0.3",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "vis": "^4.20.1"
+    "vis": "^4.20.1",
+    "webpack-dev-server": "^3.2.1"
   },
   "deprecated": false,
   "description": "visdcc",
