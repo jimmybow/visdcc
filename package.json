@@ -1,0 +1,68 @@
+{
+  "_from": "visdcc",
+  "_id": "visdcc@0.0.35",
+  "_inBundle": false,
+  "_integrity": "sha512-OW/eWJqRjtxChwq8M/8/v0LJup8hqGjiVcdqnGaQAQ38tmkTnDiYPoQ5ibfK9EqnUf+Y4D6v3aUSFylx2c6p0g==",
+  "_location": "/visdcc",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "visdcc",
+    "name": "visdcc",
+    "escapedName": "visdcc",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/visdcc/-/visdcc-0.0.25.tgz",
+  "_shasum": "4999932b1a7504f074bafd2fad7551b3ca14bc15",
+  "_spec": "visdcc",
+  "_where": "C:\\Users\\jimmybow",
+  "bugs": {
+    "url": "https://github.com/jimmybow/visdcc/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "antd": "^3.1.1",
+    "builder": "3.2.2",
+    "dash-components-archetype": "^0.2.7",
+    "prop-types": "^15.5.9",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "vis": "^4.20.1"
+  },
+  "deprecated": false,
+  "description": "visdcc",
+  "devDependencies": {
+    "dash-components-archetype-dev": "^0.2.7",
+    "enzyme": "^2.8.2",
+    "react-test-renderer": "^15.5.4"
+  },
+  "homepage": "https://github.com/jimmybow/visdcc",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "name": "visdcc",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jimmybow/visdcc.git"
+  },
+  "scripts": {
+    "copy-lib": "copy lib visdcc",
+    "demo": "builder run demo",
+    "install-local": "npm run copy-lib && python setup.py install",
+    "prepublish": "builder run build-dist && npm run copy-lib",
+    "publish-all": "npm publish && python setup.py sdist upload",
+    "publish-pypi": "npm run prepublish && python setup.py sdist upload",
+    "start": "builder run build-dev",
+    "test": "builder run check",
+    "test-debug": "builder run test-frontend-debug",
+    "test-watch": "builder run test-frontend-watch",
+    "uninstall-local": "pip uninstall visdcc -y"
+  },
+  "version": "0.0.4"
+}

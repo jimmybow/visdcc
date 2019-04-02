@@ -1,0 +1,11 @@
+node_modules
+build
+coverage
+demo
+dist
+lib
+*.egg-info
+*__pycache__
+*.pyc
+changelog.tmp
+.sass-cache

@@ -1,5 +1,6 @@
 MANIFEST.in
 README.md
+setup.cfg
 setup.py
 visdcc/__init__.py
 visdcc/bundle.js
