@@ -28,20 +28,20 @@
   },
   "bundleDependencies": false,
   "dependencies": {
-    "antd": "^3.1.1",
-    "builder": "3.2.2",
+    "antd": "^3.16.1",
+    "builder": "^4.0.0",
     "dash-components-archetype": "^0.2.7",
-    "prop-types": "^15.5.9",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "vis": "^4.20.1"
   },
   "deprecated": false,
   "description": "visdcc",
   "devDependencies": {
     "dash-components-archetype-dev": "^0.2.7",
-    "enzyme": "^2.8.2",
-    "react-test-renderer": "^15.5.4"
+    "enzyme": "^3.9.0",
+    "react-test-renderer": "^16.8.6"
   },
   "homepage": "https://github.com/jimmybow/visdcc",
   "license": "MIT",
