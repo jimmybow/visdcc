@@ -3,6 +3,7 @@ build
 coverage
 demo
 dist
+test
 lib
 *.egg-info
 *__pycache__
