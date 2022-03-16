@@ -2,8 +2,7 @@
 Dash Core Components for Visualization.
 
 - [Installing](#installing-)
-- [Requirements](#requirements)
-- [Usage](#usage-)
+- [Basic Usage](#basic-usage-)
   - [visdcc.Network](#1-visdccnetwork-)
     - [Plot basic network](#plot-basic-network-)
     - [Get selected nodes and edges](#get-selected-nodes-and-edges-)
@@ -14,6 +13,8 @@ Dash Core Components for Visualization.
     - [Open url on new window](#open-url-on-new-window-)
     - [Apply jQuery Datatables](#apply-jquery-datatables-)
     - [Add event and callback](#add-event-and-callback-)
+- [Advanced Usage](#advanced-usage-)
+    - [Dash app with decision tree](#dash-app-with-decision-tree-)
 - [Learning more about dash ...](#dash)  
 
 # Installing :
@@ -23,7 +24,7 @@ pip install dash==2.3.0
 ```
 
 [↑](#visdcc)
-# Usage :
+# Basic Usage :
 ```
 from dash import Dash, html, dcc
 from dash.dependencies import Input, Output, State
@@ -402,6 +403,11 @@ def myfun(x):
 def myfun(x): 
     return str(x)
 ```
+[↑](#visdcc)
+## Advanced Usage :
+###### Dash app with decision tree : https://github.com/jimmybow/tree_vis
+
+
 [↑](#visdcc)
 ## Dash
 Go to this link to learn about [Dash](https://dash.plotly.com/).
