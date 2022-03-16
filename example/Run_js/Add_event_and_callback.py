@@ -1,7 +1,6 @@
-import dash
-import dash_core_components as dcc
-import dash_html_components as html
+from dash import Dash, html, dcc
 from dash.dependencies import Input, Output, State
+from dash.exceptions import PreventUpdate
 import visdcc
 import pandas as pd
 
@@ -27,12 +26,15 @@ external_scripts = ['https://code.jquery.com/jquery-3.3.1.min.js',
                     'https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js']
 external_stylesheets = ['https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css']
 
-app = dash.Dash(external_scripts = external_scripts,
-                external_stylesheets = external_stylesheets)
+app = Dash(__name__, 
+    external_scripts = external_scripts,
+    external_stylesheets = external_stylesheets
+)
+app.config.suppress_callback_exceptions = True
 
 app.layout = html.Div([
     html.Button('Add mousemove event', id = 'button'),
-    visdcc.Run_js(id = 'javascript', run = "$('#datatable').DataTable()"),
+    html.Div(id = 'content'),
     html.Br(),
     html.Div(
         generate_html_table_from_df(df, id = 'datatable'), 
@@ -40,18 +42,26 @@ app.layout = html.Div([
     ),
     html.Div(id = 'output_div')
 ])
+
+@app.callback(
+    Output('content', 'children'),
+    [Input('button', 'n_clicks')])
+def myfun(x): 
+    if x is None: 
+        return visdcc.Run_js(id = 'javascript', run = "$('#datatable').DataTable()")
+    raise PreventUpdate
+
            
 @app.callback(
     Output('javascript', 'run'),
     [Input('button', 'n_clicks')])
 def myfun(x): 
-    if x is None: return ''
+    if x is None: return ""
     return '''
     var target = $('#datatable')[0]
     target.addEventListener('mousemove', function(evt) {
         setProps({ 
-            'event': {'x':evt.x, 
-                      'y':evt.y }
+            'event': {'x':evt.x, 'y':evt.y }
         })
         console.log(evt)
     })
@@ -66,4 +76,3 @@ def myfun(x):
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-    

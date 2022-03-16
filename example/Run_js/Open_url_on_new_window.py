@@ -5,13 +5,11 @@ Created on Sat Feb  3 20:50:16 2018
 @author: jimmybow
 """
 
-import dash
-import dash_core_components as dcc
-import dash_html_components as html
+from dash import Dash, html, dcc
 from dash.dependencies import Input, Output, State
 import visdcc
 
-app = dash.Dash()
+app = Dash(__name__)
 
 app.layout = html.Div([
     html.Button('open url', id = 'button'),

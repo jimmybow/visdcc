@@ -19,25 +19,17 @@ Dash Core Components for Visualization.
 # Installing :
 ```
 pip install visdcc
+pip install dash==2.3.0
 ```
-
-# Requirements：
-
-* **dash** -- The core dash backend
-* **dash-renderer** -- The dash front-end
-* **dash-html-components** -- HTML components
-* **dash-core-components** -- Supercharged components
 
 [↑](#visdcc)
 # Usage :
 ```
-import dash
-import dash_core_components as dcc
-import dash_html_components as html
+from dash import Dash, html, dcc
 from dash.dependencies import Input, Output, State
 import visdcc
 
-app = dash.Dash()
+app = Dash(__name__)
 app.layout = html.Div(...)
 
 @app.callback(...)
@@ -48,6 +40,8 @@ def myfun(...):
 if __name__ == '__main__':
     app.run_server()
 ```
+See detail [example code](example)
+
 [↑](#visdcc)
 # 1. visdcc.Network : 
 See documents of vis.js : https://visjs.github.io/vis-network/docs/network/
@@ -203,7 +197,7 @@ Data_Sample = {
                 'Is_click': True }  ]
 }
 
-app = dash.Dash(external_stylesheets = external_stylesheets)
+app = Dash(__name__, external_stylesheets = external_stylesheets)
 
 app.layout = html.Div([
     visdcc.DataTable(id         = 'table' ,
@@ -300,8 +294,10 @@ external_scripts = ['https://code.jquery.com/jquery-3.3.1.min.js',
                     'https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js']
 external_stylesheets = ['https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css']
 
-app = dash.Dash(external_scripts = external_scripts,
-                external_stylesheets = external_stylesheets)
+app = Dash(__name__, 
+    external_scripts = external_scripts,
+    external_stylesheets = external_stylesheets
+)
 
 app.layout = html.Div([
     html.Button('apply datatable', id = 'button'),
@@ -358,12 +354,15 @@ external_scripts = ['https://code.jquery.com/jquery-3.3.1.min.js',
                     'https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js']
 external_stylesheets = ['https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css']
 
-app = dash.Dash(external_scripts = external_scripts,
-                external_stylesheets = external_stylesheets)
+app = Dash(__name__, 
+    external_scripts = external_scripts,
+    external_stylesheets = external_stylesheets
+)
+app.config.suppress_callback_exceptions = True
 
 app.layout = html.Div([
     html.Button('Add mousemove event', id = 'button'),
-    visdcc.Run_js(id = 'javascript', run = "$('#datatable').DataTable()"),
+    html.Div(id = 'content'),
     html.Br(),
     html.Div(
         generate_html_table_from_df(df, id = 'datatable'), 
@@ -371,18 +370,26 @@ app.layout = html.Div([
     ),
     html.Div(id = 'output_div')
 ])
+
+@app.callback(
+    Output('content', 'children'),
+    [Input('button', 'n_clicks')])
+def myfun(x): 
+    if x is None: 
+        return visdcc.Run_js(id = 'javascript', run = "$('#datatable').DataTable()")
+    raise PreventUpdate
+
            
 @app.callback(
     Output('javascript', 'run'),
     [Input('button', 'n_clicks')])
 def myfun(x): 
-    if x is None: return ''
+    if x is None: return ""
     return '''
     var target = $('#datatable')[0]
     target.addEventListener('mousemove', function(evt) {
         setProps({ 
-            'event': {'x':evt.x, 
-                      'y':evt.y }
+            'event': {'x':evt.x, 'y':evt.y }
         })
         console.log(evt)
     })
@@ -397,4 +404,4 @@ def myfun(x):
 ```
 [↑](#visdcc)
 ## Dash
-Go to this link to learn about [Dash](https://plot.ly/dash/).
+Go to this link to learn about [Dash](https://dash.plotly.com/).

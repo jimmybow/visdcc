@@ -1,6 +1,4 @@
-import dash
-import dash_core_components as dcc
-import dash_html_components as html
+from dash import Dash, html, dcc, callback_context as ctx
 from dash.dependencies import Input, Output, State
 import visdcc
 import pandas as pd
@@ -27,8 +25,10 @@ external_scripts = ['https://code.jquery.com/jquery-3.3.1.min.js',
                     'https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js']
 external_stylesheets = ['https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css']
 
-app = dash.Dash(external_scripts = external_scripts,
-                external_stylesheets = external_stylesheets)
+app = Dash(__name__, 
+    external_scripts = external_scripts,
+    external_stylesheets = external_stylesheets
+)
 
 app.layout = html.Div([
     html.Button('apply datatable', id = 'button'),
@@ -53,7 +53,6 @@ def myfun(x):
     Output('output_div', 'children'),
     [Input('datatable_{}_{}'.format(i, j), 'n_clicks') for i in range(len(df)) for j in range(len(df.columns))])
 def myfun(*args): 
-    ctx = dash.callback_context
     if not ctx.triggered or ctx.triggered[0]['value'] is None:  return ""
     input_id = ctx.triggered[0]['prop_id'].split('.')[0]
     row = input_id.split('_')[1]
