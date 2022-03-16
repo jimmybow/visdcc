@@ -13,7 +13,7 @@ Dash Core Components for Visualization.
     - [Open url on new window](#open-url-on-new-window-)
     - [Apply jQuery Datatables](#apply-jquery-datatables-)
     - [Add event and callback](#add-event-and-callback-)
-- [Advanced Usage](#advanced-usage-)
+- Advanced Usage
     - [Dash app with decision tree](https://github.com/jimmybow/tree_vis)
 - [Learning more about dash ...](https://dash.plotly.com/)  
 
