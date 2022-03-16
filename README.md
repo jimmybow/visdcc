@@ -14,8 +14,8 @@ Dash Core Components for Visualization.
     - [Apply jQuery Datatables](#apply-jquery-datatables-)
     - [Add event and callback](#add-event-and-callback-)
 - [Advanced Usage](#advanced-usage-)
-    - [Dash app with decision tree](#dash-app-with-decision-tree-)
-- [Learning more about dash ...](#dash)  
+    - [Dash app with decision tree](https://github.com/jimmybow/tree_vis)
+- [Learning more about dash ...](https://dash.plotly.com/)  
 
 # Installing :
 ```
@@ -23,7 +23,6 @@ pip install visdcc
 pip install dash==2.3.0
 ```
 
-[↑](#visdcc)
 # Basic Usage :
 ```
 from dash import Dash, html, dcc
@@ -404,10 +403,3 @@ def myfun(x):
     return str(x)
 ```
 [↑](#visdcc)
-## Advanced Usage :
-###### Dash app with decision tree : https://github.com/jimmybow/tree_vis
-
-
-[↑](#visdcc)
-## Dash
-Go to this link to learn about [Dash](https://dash.plotly.com/).
