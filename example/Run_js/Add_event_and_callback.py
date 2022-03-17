@@ -30,11 +30,10 @@ app = Dash(__name__,
     external_scripts = external_scripts,
     external_stylesheets = external_stylesheets
 )
-app.config.suppress_callback_exceptions = True
 
 app.layout = html.Div([
     html.Button('Add mousemove event', id = 'button'),
-    html.Div(id = 'content'),
+    visdcc.Run_js(id = 'javascript', run = "$('#datatable').DataTable()", event = 'null'),
     html.Br(),
     html.Div(
         generate_html_table_from_df(df, id = 'datatable'), 
@@ -42,16 +41,7 @@ app.layout = html.Div([
     ),
     html.Div(id = 'output_div')
 ])
-
-@app.callback(
-    Output('content', 'children'),
-    [Input('button', 'n_clicks')])
-def myfun(x): 
-    if x is None: 
-        return visdcc.Run_js(id = 'javascript', run = "$('#datatable').DataTable()")
-    raise PreventUpdate
-
-           
+         
 @app.callback(
     Output('javascript', 'run'),
     [Input('button', 'n_clicks')])
