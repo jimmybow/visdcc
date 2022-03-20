@@ -11,7 +11,7 @@ export default class Network extends Component {
     }    
         
     componentDidMount() {
-        const {id, data, options, moveTo, fit, focus, setProps} = this.props;    
+        const {id, run, data, options, moveTo, fit, focus, setProps} = this.props;    
         var gd = document.getElementById(id);      
         this.nn.add(data.nodes)
         this.ee.add(data.edges)
@@ -21,7 +21,7 @@ export default class Network extends Component {
         })
         if (moveTo.Is_used != false) this.net.moveTo( moveTo ) 
         if (fit.Is_used != false) this.net.fit( fit ) 
-        if (focus.Is_used != false) this.net.focus( focus.nodeId, focus.options) 
+        if (focus.Is_used != false) this.net.focus( focus.nodeId, focus.options)        
     }
     
     componentWillReceiveProps(nextProps) {    
@@ -49,13 +49,14 @@ export default class Network extends Component {
             this.net.focus( nextProps.focus.nodeId, nextProps.focus.options)
         }        
     }
-    
-    shouldComponentUpdate(nextProps){
-            return (this.props.data !== nextProps.data || this.props.options !== nextProps.options);
-    }
-    
+        
     render() {
-        const {id, style} = this.props;              
+        const {id, run, style, setProps} = this.props;   
+        if ( run ){
+            try { eval(run) } 
+            catch (exception) { console.log(exception) }  
+            if (setProps) setProps( {run: ''} )
+        }                   
         return (
             <div id = {id} style = {style}></div>
         );
@@ -70,7 +71,25 @@ Network.propTypes = {
     selection: PropTypes.object,
     moveTo: PropTypes.object,
     fit: PropTypes.object,
-    focus: PropTypes.object
+    focus: PropTypes.object,
+    /**
+     * run your javascript here
+     */
+     run : PropTypes.string,   
+    /**
+     * Using 'setProps' to set event props
+     */
+     event: PropTypes.object,
+     event0: PropTypes.object,
+     event1: PropTypes.object,
+     event2: PropTypes.object,
+     event3: PropTypes.object,
+     event4: PropTypes.object,
+     event5: PropTypes.object,
+     event6: PropTypes.object,
+     event7: PropTypes.object,
+     event8: PropTypes.object,
+     event9: PropTypes.object      
 };
         
 Network.defaultProps = {

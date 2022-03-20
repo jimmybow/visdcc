@@ -7,6 +7,7 @@ Dash Core Components for Visualization.
     - [Plot basic network](#plot-basic-network-)
     - [Get selected nodes and edges](#get-selected-nodes-and-edges-)
     - [Animate or move the camera](#animate-or-move-the-camera-)
+    - [Animate or move the camera by javascript](#animate-or-move-the-camera-by-javascript-)    
   - [visdcc.DataTable](#2-visdccdatatable-)
     - [Plot basic table and get selected cell](#plot-basic-table-and-get-selected-cell-)
   - [visdcc.Run_js](#3-visdccrun_js-)
@@ -154,9 +155,67 @@ def myfun(z, x, y):
     Output('net', 'fit'),
     [Input('node', 'value')])
 def myfun(x):
-    if x == '': return({'Is_used': False})
-    else: return({'nodes': [x], 'animation': True})
+    if x == '': return {'Is_used': False}
+    else: return {'nodes': [x], 'animation': True}
 ```
+
+[↑](#visdcc)
+### Animate or move the camera by javascript:
+
+```
+from dash import html, dcc, callback_context as ctx
+from dash_extensions.enrich import DashProxy as Dash, MultiplexerTransform, Input, Output, State
+from flask import Flask, request, send_file
+import visdcc
+
+server = Flask(__name__)
+app = Dash(server=server, prevent_initial_callbacks=True, transforms=[MultiplexerTransform()])
+
+app.layout = html.Div([
+      visdcc.Network(id = 'net', 
+                     options = dict(height= '600px', width= '100%')),
+      dcc.Input(id = 'label',
+                placeholder = 'Enter a scale ...',
+                type = 'text',
+                value = ''  ),
+      dcc.Input(id = 'labelx',
+                placeholder = 'Enter x position ...',
+                type = 'text',
+                value = ''  ),    
+      dcc.Input(id = 'labely',
+                placeholder = 'Enter y position ...',
+                type = 'text',
+                value = ''  ), 
+      dcc.Input(id = 'node',
+                placeholder = 'Enter node id ...',
+                type = 'text',
+                value = ''  )              
+])
+
+@app.callback(
+    Output('net', 'run'),
+    [Input('label', 'value'),
+     Input('labelx', 'value'),
+     Input('labely', 'value')])
+def myfun(z, x, y):
+    if z == '': z = '1'
+    if x == '': x = '1'
+    if y == '': y = '1'
+    javascript = "this.net.moveTo({{'position': {{'x': {}, 'y': {}}}, 'scale': {}}})".format(x,y,z)
+    print(javascript)
+    return javascript
+
+@app.callback(
+    Output('net', 'run'),
+    [Input('node', 'value')])
+def myfun(x):
+    if x == '': return ""
+    else: 
+        javascript = "this.net.fit({{'nodes':[{}], 'animation': true}})".format(x)
+        print(javascript)
+        return javascript
+```
+
 [↑](#visdcc)
 # 2. visdcc.DataTable : 
 See documents of antd.js : https://ant.design/components/table/

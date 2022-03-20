@@ -2,15 +2,6 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 export default class Run_js extends Component {
-    componentDidMount() {
-        const {id, run, style, setProps} = this.props;
-        if ( run ){
-            try { eval(run) } 
-            catch (exception) { console.log(exception) }  
-            if (setProps) setProps( {run: ''} )
-        }
-    }
-
     render() {
         const {id, run, style, setProps} = this.props;
         if ( run ){
