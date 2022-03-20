@@ -160,7 +160,7 @@ def myfun(x):
 ```
 
 [↑](#visdcc)
-### Animate or move the camera by javascript:
+### Animate or move the camera by javascript :
 
 ```
 from dash import html, dcc, callback_context as ctx
