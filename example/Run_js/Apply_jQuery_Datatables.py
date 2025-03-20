@@ -60,5 +60,5 @@ def myfun(*args):
     return "you click on row {} col {}".format(row, col)
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run(debug=True)
     

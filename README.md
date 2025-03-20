@@ -21,7 +21,7 @@ Dash Core Components for Visualization.
 # Installing :
 ```
 pip install visdcc
-pip install dash==2.3.0
+pip install dash==3.0.0
 ```
 
 # Basic Usage :
@@ -39,7 +39,7 @@ def myfun(...):
     return ...
 
 if __name__ == '__main__':
-    app.run_server()
+    app.run()
 ```
 See detail [example code](example)
 

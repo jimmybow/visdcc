@@ -9,7 +9,7 @@ from dash import Dash, html, dcc
 from dash.dependencies import Input, Output, State
 import visdcc
 
-external_stylesheets = ['https://unpkg.com/antd@3.1.1/dist/antd.css',
+external_stylesheets = ['https://unpkg.com/antd@3.16.1/dist/antd.css',
                         'https://rawgit.com/jimmybow/CSS/master/visdcc/DataTable/Filter.css']
 
 Data_Sample = {
@@ -27,7 +27,7 @@ Data_Sample = {
                 'key': 'name',
                 'Is_sort': True, 
                 'Is_click': True,
-                'width': 120,
+                'width': 150,
                 'fixed': True    },
                {'title': 'Ages',
                 'dataIndex': 'age',
@@ -89,4 +89,4 @@ def myfun(x):
     else          : return("searchText are " + str(x) )    
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run(debug=True)

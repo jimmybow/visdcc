@@ -1,0 +1,13 @@
+Package: visdcc
+Title: Dash Components for Visualization.
+Version: 0.0.60
+Description: Dash Components for Visualization.
+Depends: R (>= 3.0.2)
+Imports: 
+Suggests: 
+License: MIT + file LICENSE
+URL: https://github.com/https://github.com/jimmybow/visdcc/visdcc
+BugReports: https://github.com/https://github.com/jimmybow/visdcc/visdcc/issues
+Encoding: UTF-8
+LazyData: true
+KeepSource: true

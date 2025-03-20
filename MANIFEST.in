@@ -1,5 +1,11 @@
-include visdcc/bundle.js
-include visdcc/bundle.js.map
+include visdcc/visdcc.min.js
+include visdcc/visdcc.min.js.map
+include visdcc/async-*.js
+include visdcc/async-*.js.map
+include visdcc/*-shared.js
+include visdcc/*-shared.js.map
 include visdcc/metadata.json
+include visdcc/package-info.json
 include README.md
-include LICENSE.md
+include LICENSE
+include package.json

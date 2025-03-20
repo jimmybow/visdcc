@@ -1,71 +1,61 @@
 {
-  "_from": "visdcc",
-  "_id": "visdcc@0.0.50",
-  "_inBundle": false,
-  "_integrity": "sha512-OW/eWJqRjtxChwq8M/8/v0LJup8hqGjiVcdqnGaQAQ38tmkTnDiYPoQ5ibfK9EqnUf+Y4D6v3aUSFylx2c6p0g==",
-  "_location": "/visdcc",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "tag",
-    "registry": true,
-    "raw": "visdcc",
-    "name": "visdcc",
-    "escapedName": "visdcc",
-    "rawSpec": "",
-    "saveSpec": null,
-    "fetchSpec": "latest"
-  },
-  "_requiredBy": [
-    "#USER",
-    "/"
-  ],
-  "_resolved": "https://registry.npmjs.org/visdcc/-/visdcc-0.0.50.tgz",
-  "_shasum": "4999932b1a7504f074bafd2fad7551b3ca14bc15",
-  "_spec": "visdcc",
-  "_where": "C:\\Users\\jimmybow",
-  "bugs": {
-    "url": "https://github.com/jimmybow/visdcc/issues"
-  },
-  "bundleDependencies": false,
-  "dependencies": {
-    "antd": "^3.16.1",
-    "builder": "^4.0.0",
-    "dash-components-archetype": "^0.2.7",
-    "extend": "^3.0.2",
-    "growl": "^1.10.5",
-    "lodash": "^4.17.11",
-    "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "vis": "^4.20.1",
-    "webpack-dev-server": "^3.2.1"
-  },
-  "deprecated": false,
-  "description": "visdcc",
-  "devDependencies": {
-    "enzyme": "^3.9.0",
-    "react-test-renderer": "^16.8.6"
-  },
-  "homepage": "https://github.com/jimmybow/visdcc",
-  "license": "MIT",
-  "main": "lib/index.js",
   "name": "visdcc",
+  "version": "0.0.60",
+  "description": "Dash Components for Visualization.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jimmybow/visdcc.git"
+    "url": "git://github.com/https://github.com/jimmybow/visdcc/visdcc.git"
   },
+  "bugs": {
+    "url": "https://github.com/https://github.com/jimmybow/visdcc/visdcc/issues"
+  },
+  "homepage": "https://github.com/https://github.com/jimmybow/visdcc/visdcc",
+  "main": "build/index.js",
   "scripts": {
-    "copy-lib": "copy lib visdcc",
-    "demo": "builder run demo",
-    "install-local": "npm run copy-lib && python setup.py install",
-    "prepublish": "builder run build-dist && npm run copy-lib",
+    "start": "webpack serve --config ./webpack.serve.config.js --open",
+    "validate-init": "python _validate_init.py",
+    "prepublishOnly": "npm run validate-init",
     "publish-all": "npm publish && python setup.py sdist upload",
-    "publish-pypi": "npm run prepublish && python setup.py sdist upload",
-    "start": "builder run build-dev",
-    "test": "builder run check",
-    "test-debug": "builder run test-frontend-debug",
-    "test-watch": "builder run test-frontend-watch",
-    "uninstall-local": "pip uninstall visdcc -y"
+    "build:js": "webpack --mode production",
+    "build:backends": "dash-generate-components ./src/lib/components visdcc -p package-info.json --r-prefix '' --jl-prefix '' --ignore \\.test\\.",
+    "build:backends-activated": "(. venv/bin/activate || venv\\scripts\\activate && npm run build:backends)",
+    "build": "npm run build:js && npm run build:backends",
+    "build:activated": "npm run build:js && npm run build:backends-activated"
   },
-  "version": "0.0.50"
+  "author": "jimmybow <jimmybow@hotmail.com.tw>",
+  "license": "MIT",
+  "dependencies": {
+    "ramda": "^0.26.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
+    "@babel/preset-env": "^7.22.2",
+    "@babel/preset-react": "^7.22.3",
+    "@plotly/dash-component-plugins": "^1.2.3",
+    "@plotly/webpack-dash-dynamic-import": "^1.2.0",
+    "antd": "^3.16.1",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^9.1.2",
+    "copyfiles": "^2.1.1",
+    "css-loader": "^6.8.1",
+    "eslint": "^6.0.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-react": "^7.14.2",
+    "prop-types": "^15.8.1",
+    "react": "^16.8.6",
+    "react-docgen": "^5.4.3",
+    "react-dom": "^16.8.6",
+    "style-loader": "^3.3.3",
+    "styled-jsx": "^5.1.6",
+    "vis": "^4.20.1",
+    "webpack": "^5.84.1",
+    "webpack-cli": "^5.1.1",
+    "webpack-dev-server": "^4.15.0"
+  },
+  "engines": {
+    "node": ">=8.11.0",
+    "npm": ">=6.1.0"
+  }
 }

@@ -1,25 +1,28 @@
+import json
 from setuptools import setup
+from pathlib import Path
 
-exec (open('visdcc/version.py').read())
+here = Path(__file__).parent
+with open('package.json') as f:
+    package = json.load(f)
+long_description = (here / 'README.md').read_text()
+
+package_name = package["name"].replace(" ", "_").replace("-", "_")
 
 setup(
-    name='visdcc',
-    version=__version__,
-    author='jimmybow',
-    author_email='jimmybow@hotmail.com.tw',
-    packages=['visdcc'],
-    url = 'https://github.com/jimmybow/visdcc',
-    include_package_data = True,
-    license='MIT',
-    description='visdcc',
+    name=package_name,
+    version=package["version"],
+    author=package['author'],
+    packages=[package_name],
+    include_package_data=True,
+    license=package['license'],
+    description=package.get('description', package_name),
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     install_requires=[],
-    classifiers=[
+    classifiers = [
+        'Framework :: Dash',
         'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python',
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6'
-    ]   
+        'Programming Language :: Python'
+    ],    
 )

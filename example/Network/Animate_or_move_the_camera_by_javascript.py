@@ -5,6 +5,7 @@ Created on Sat Feb  3 20:50:16 2018
 @author: jimmybow
 """
 
+import dash
 from dash import html, dcc, callback_context as ctx
 from dash_extensions.enrich import DashProxy as Dash, MultiplexerTransform, Input, Output, State
 from flask import Flask, request, send_file
@@ -60,4 +61,4 @@ def myfun(x):
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run(debug=True)

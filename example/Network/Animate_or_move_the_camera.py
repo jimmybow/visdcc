@@ -5,11 +5,13 @@ Created on Sat Feb  3 20:50:16 2018
 @author: jimmybow
 """
 
-from dash import Dash, html, dcc
+import dash
+from dash import dcc
+from dash import html
 from dash.dependencies import Input, Output, State
 import visdcc
 
-app = Dash(__name__)
+app = dash.Dash()
 
 app.layout = html.Div([
       visdcc.Network(id = 'net', 
@@ -47,8 +49,8 @@ def myfun(z, x, y):
     Output('net', 'fit'),
     [Input('node', 'value')])
 def myfun(x):
-    if x == '': return {'Is_used': False}
-    else: return {'nodes': [x], 'animation': True}
+    if x == '': return({'Is_used': False})
+    else: return({'nodes': [x], 'animation': True})
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run(debug=True)
