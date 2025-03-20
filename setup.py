@@ -5,7 +5,7 @@ from pathlib import Path
 here = Path(__file__).parent
 with open('package.json') as f:
     package = json.load(f)
-long_description = (here / 'README.md').read_text()
+long_description = (here / 'README.md').read_text(encoding='utf-8')
 
 package_name = package["name"].replace(" ", "_").replace("-", "_")
 
@@ -19,7 +19,9 @@ setup(
     description=package.get('description', package_name),
     long_description=long_description,
     long_description_content_type="text/markdown",
-    install_requires=[],
+    install_requires=[
+        "dash>=3.0.0",
+    ],
     classifiers = [
         'Framework :: Dash',
         'License :: OSI Approved :: MIT License',
